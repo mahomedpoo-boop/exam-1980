@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<title>1980 Kitchen Exams</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#080810;color:#fff;min-height:100vh;direction:rtl}
+input,button,select,textarea{font-family:Arial,sans-serif}
+.screen{display:none}.screen.active{display:block}
+.btn{border:none;border-radius:10px;padding:11px 18px;font-size:13px;font-weight:800;cursor:pointer}
+.btn:active{opacity:.75}
+.r{background:#e94560;color:#fff}.g{background:#22c55e;color:#fff}
+.d{background:#1a1a2e;color:#fff}.y{background:#ffd700;color:#000}
+.gr{background:#333;color:#aaa}
+.sm{padding:6px 11px;font-size:11px;border-radius:7px}
+.inp{width:100%;background:#0a0a16;border:1px solid #2a2a4e;border-radius:10px;color:#fff;font-size:16px;padding:11px 14px;outline:none}
+.inp:focus{border-color:#e94560}
+.card{background:#0f0f1e;border:1px solid #1e1e3e;border-radius:13px;padding:14px;margin-bottom:11px}
+.cd{background:#0a0a16;border:1px solid #161626;border-radius:10px;padding:11px;margin-bottom:8px}
+.mb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.mb.open{display:flex}
+.mw{background:#0f0f1e;border:1px solid #e94560;border-radius:16px;padding:25px 22px;max-width:360px;width:100%;text-align:center}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #1e1e3e;padding:7px 8px}
+th{background:#1a1a2e;color:#888;font-size:11px;font-weight:600}
+.ok{background:rgba(34,197,94,.1)}.wx{background:rgba(239,68,68,.08)}
+.sb{display:none}.sb.op{display:block}
+@media(max-width:580px){.g2{grid-template-columns:1fr!important}}
+@media print{.np{display:none!important}body{background:#fff!important;color:#000!important}}
+
+/* ---- extra layout styles ---- */
+.wrap{max-width:920px;margin:0 auto;padding:16px 16px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:8px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:900;color:#e94560;letter-spacing:1px}
+.sub{font-size:11px;color:#888;margin-top:2px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
+@media(max-width:580px){.g3{grid-template-columns:1fr 1fr!important}}
+.catcard{position:relative;background:#0f0f1e;border:1px solid #1e1e3e;border-radius:13px;padding:16px 10px;text-align:center;cursor:pointer;transition:.15s}
+.catcard:active{transform:scale(.96);border-color:#e94560}
+.catcard.addcard{border-style:dashed;border-color:#333;color:#666}
+.catname{font-weight:800;font-size:13px;margin-top:6px}
+.catcount{font-size:10px;color:#888;margin-top:2px}
+.itemrow{display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.itemrow:active{opacity:.7}
+.itemname{font-weight:800;font-size:14px}
+.itemname_ar{font-size:11px;color:#888;margin-top:2px}
+.backbtn{background:#1a1a2e;color:#fff;border:none;border-radius:10px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:14px}
+.stepnum{display:inline-flex;min-width:20px;height:20px;background:#e94560;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-left:8px;flex-shrink:0}
+.step{display:flex;align-items:flex-start;margin-bottom:9px;font-size:13px;line-height:1.6}
+.section-title{font-size:13px;color:#e94560;font-weight:800;margin:16px 0 8px}
+.search{margin-bottom:14px}
+.close-x{position:absolute;top:10px;left:10px;background:#1a1a2e;border:none;color:#fff;width:30px;height:30px;border-radius:8px;font-size:16px;cursor:pointer}
+.mbfull .mw{max-width:560px;text-align:right;position:relative;max-height:88vh;overflow-y:auto}
+.examq{font-size:14px;font-weight:700;margin-bottom:14px}
+.scorebox{font-size:34px;font-weight:900;color:#e94560;margin:10px 0}
+.iconbtn{background:#1a1a2e;border:1px solid #2a2a4e;color:#fff;width:30px;height:30px;border-radius:8px;font-size:13px;cursor:pointer;flex-shrink:0}
+.badge{position:absolute;top:6px;left:6px;display:flex;gap:4px}
+.field-label{font-size:11px;color:#888;margin:10px 0 5px;text-align:right;font-weight:700}
+.ing-row{display:grid;grid-template-columns:1fr 1fr 2fr auto;gap:6px;margin-bottom:6px}
+.step-row{display:flex;gap:6px;margin-bottom:6px;align-items:flex-start}
+.step-row textarea{flex:1;min-height:44px;resize:vertical}
+.admin-strip{display:flex;justify-content:space-between;align-items:center;background:#151527;border:1px solid #e94560;border-radius:10px;padding:8px 12px;margin-bottom:14px;font-size:12px}
+.hidden{display:none!important}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pill{background:#1a1a2e;border:1px solid #2a2a4e;color:#fff;border-radius:20px;padding:8px 14px;font-size:12px;cursor:pointer}
+.pill.active{background:#e94560;border-color:#e94560}
+.examopt{transition:.1s}
+
+/* ---- certificate ---- */
+.cert-outer{position:relative;background:#fffdf7;color:#1a1a1a;border:3px double #c8a13a;border-radius:8px;padding:34px 26px 26px;margin-bottom:16px;direction:rtl;font-family:Arial,sans-serif}
+.cert-leaf{position:absolute;font-size:22px;opacity:.85}
+.cert-leaf.tl{top:10px;left:14px}
+.cert-leaf.tr{top:10px;right:14px}
+.cert-leaf.bl{bottom:10px;left:14px}
+.cert-leaf.br{bottom:10px;right:14px}
+.cert-logo{font-size:26px;font-weight:900;color:#111;letter-spacing:4px;text-align:center}
+.cert-sub{text-align:center;color:#c8a13a;font-size:11px;font-weight:800;letter-spacing:2px;margin:6px 0 14px;text-transform:uppercase}
+.cert-title{text-align:center;font-size:21px;font-weight:900;color:#111;margin-bottom:10px}
+.cert-hr{width:130px;height:2px;background:#c8a13a;margin:0 auto 16px}
+.cert-label{text-align:center;color:#666;font-size:12px;margin-bottom:8px}
+.cert-name{text-align:center;font-size:27px;font-weight:900;color:#1e7d32;margin-bottom:10px;line-height:1.4}
+.cert-hr2{width:70%;height:1px;background:#ddd;margin:0 auto 18px}
+.cert-line{text-align:center;font-size:13px;color:#444;margin-bottom:6px}
+.cert-examname{text-align:center;font-size:14px;font-weight:800;color:#222;margin-bottom:10px}
+.cert-level{text-align:center;font-size:13px;font-weight:700;color:#222;margin-bottom:6px}
+.cert-branch{text-align:center;font-size:13px;font-weight:700;color:#222;margin-bottom:16px}
+.cert-badge{display:block;width:fit-content;margin:0 auto 22px;background:#1e7d32;color:#fff;font-weight:900;font-size:14px;padding:10px 26px;border-radius:30px}
+.cert-sig-wrap{display:flex;justify-content:space-around;border-top:1px solid #ddd;padding-top:16px;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.cert-sig{text-align:center;flex:1;min-width:140px}
+.cert-sig-label{font-size:11px;color:#888;margin-bottom:6px}
+.cert-sig-en{font-size:14px;font-weight:800;color:#111}
+.cert-sig-ar{font-size:12px;color:#555;margin-top:2px}
+.cert-footer{display:flex;justify-content:space-between;font-size:11px;color:#777;margin-top:8px;flex-wrap:wrap;gap:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HOME SCREEN -->
+  <div class="screen active" id="screen-home">
+    <div class="top">
+      <div>
+        <div class="logo">1980</div>
+        <div class="sub">Kitchen Exams &amp; Menu Reference</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn r sm" onclick="openExamSetup()">📝 امتحان</button>
+        <button class="btn d sm" id="adminToggleBtn" onclick="onAdminToggle()">🔒 تعديل</button>
+      </div>
+    </div>
+
+    <div class="admin-strip hidden" id="adminStrip">
+      <span>✅ وضع التعديل مفعّل</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn y sm" onclick="openEmployeesModal()">👥 الموظفين</button>
+        <button class="btn y sm" onclick="openCertSettings()">🖋️ إعدادات الشهادة</button>
+        <button class="btn y sm" onclick="exportData()">تصدير نسخة</button>
+        <button class="btn gr sm" onclick="document.getElementById('importFile').click()">استيراد</button>
+        <button class="btn r sm" onclick="adminLogout()">خروج</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json" class="hidden" onchange="importData(event)"/>
+    </div>
+
+    <input class="inp search" id="searchBox" placeholder="ابحث عن صنف..." oninput="renderSearch()"/>
+    <div id="searchResults"></div>
+
+    <div class="section-title">الأقسام</div>
+    <div class="g3" id="catGrid"></div>
+  </div>
+
+  <!-- CATEGORY SCREEN -->
+  <div class="screen" id="screen-cat">
+    <button class="backbtn" onclick="showScreen('screen-home')">→ رجوع للأقسام</button>
+    <div class="top">
+      <div class="logo" id="catTitle" style="font-size:18px"></div>
+    </div>
+    <div id="catItems"></div>
+    <button class="btn g hidden" id="addItemBtn" style="width:100%;margin-top:8px" onclick="openEditItem(currentCat,-1)">+ إضافة صنف جديد</button>
+  </div>
+
+  <!-- EXAM SETUP SCREEN -->
+  <div class="screen" id="screen-examsetup">
+    <button class="backbtn np" onclick="showScreen('screen-home')">→ رجوع</button>
+    <div class="card">
+      <div class="section-title" style="margin-top:0">دخول الموظف</div>
+      <input class="inp" id="examCode" placeholder="اكتب كودك" oninput="onExamCodeInput()" style="margin-bottom:10px"/>
+      <div id="empInfoBox"></div>
+
+      <div class="section-title">نوع الامتحان</div>
+      <div class="pillrow" id="examTypeRow">
+        <button class="pill active" data-type="full" onclick="pickExamType('full')">امتحان شامل (كل الأقسام)</button>
+        <button class="pill" data-type="random" onclick="pickExamType('random')">امتحان عشوائي</button>
+        <button class="pill" data-type="cat" onclick="pickExamType('cat')">امتحان قسم معين</button>
+      </div>
+
+      <div id="catPickWrap" class="hidden">
+        <div class="field-label">اختر القسم</div>
+        <select class="inp" id="examCatSelect" style="margin-bottom:10px"></select>
+      </div>
+
+      <div class="field-label">عدد الأسئلة</div>
+      <input class="inp" id="examCount" type="number" min="3" max="90" value="15" style="margin-bottom:6px"/>
+      <div class="sub" id="examCountHint" style="margin-bottom:14px"></div>
+
+      <button class="btn r" style="width:100%" onclick="startExam()">ابدأ الامتحان</button>
+    </div>
+  </div>
+
+  <!-- EXAM RUN SCREEN -->
+  <div class="screen" id="screen-exam">
+    <div class="top np">
+      <button class="backbtn" style="margin:0" onclick="if(confirm('هل تريد الخروج من الامتحان؟ لن تُحفظ النتيجة'))showScreen('screen-home')">→ خروج</button>
+      <div class="sub" id="examProgress"></div>
+    </div>
+    <div class="card" id="examCard"></div>
+  </div>
+
+  <!-- EXAM CERTIFICATE SCREEN -->
+  <div class="screen" id="screen-cert">
+    <div class="top np">
+      <button class="backbtn" style="margin:0" onclick="showScreen('screen-home')">→ الرئيسية</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn y sm" onclick="window.print()">🖨️ طباعة الشهادة</button>
+        <button class="btn gr sm" onclick="openExamSetup()">امتحان جديد</button>
+      </div>
+    </div>
+    <div class="cert-outer" id="certCard"></div>
+    <div class="section-title">سجل مراجعة الإجابات</div>
+    <div id="certReview"></div>
+  </div>
+
+</div>
+
+<!-- ITEM DETAIL MODAL -->
+<div class="mb mbfull" id="itemModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('itemModal')">✕</button>
+    <div id="itemModalBody"></div>
+  </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="mb" id="pwModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('pwModal')">✕</button>
+    <div style="font-weight:900;font-size:16px;margin-bottom:14px">🔒 دخول وضع التعديل</div>
+    <input class="inp" id="pwInput" type="password" placeholder="كلمة المرور" style="margin-bottom:12px" onkeydown="if(event.key==='Enter')checkPassword()"/>
+    <div id="pwError" style="color:#e94560;font-size:11px;margin-bottom:10px"></div>
+    <button class="btn r" style="width:100%" onclick="checkPassword()">دخول</button>
+  </div>
+</div>
+
+<!-- EDIT CATEGORY MODAL -->
+<div class="mb mbfull" id="editCatModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('editCatModal')">✕</button>
+    <div style="font-weight:900;font-size:16px;margin-bottom:10px">قسم جديد</div>
+    <div class="field-label">اسم القسم (إنجليزي - معرّف فريد)</div>
+    <input class="inp" id="newCatKey" placeholder="مثال: Desserts"/>
+    <div class="field-label">اسم القسم بالعربي</div>
+    <input class="inp" id="newCatAr" placeholder="مثال: الحلويات"/>
+    <div class="field-label">أيقونة (إيموجي)</div>
+    <input class="inp" id="newCatIcon" placeholder="🍰" value="🍴"/>
+    <button class="btn g" style="width:100%;margin-top:14px" onclick="saveNewCategory()">حفظ القسم</button>
+  </div>
+</div>
+
+<!-- EDIT ITEM MODAL -->
+<div class="mb mbfull" id="editItemModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('editItemModal')">✕</button>
+    <div style="font-weight:900;font-size:16px;margin-bottom:10px" id="editItemTitle">تعديل صنف</div>
+
+    <div class="field-label">اسم الصنف (إنجليزي)</div>
+    <input class="inp" id="editNameEn"/>
+    <div class="field-label">اسم الصنف (عربي)</div>
+    <input class="inp" id="editNameAr"/>
+
+    <div class="field-label">المكونات</div>
+    <div id="ingRows"></div>
+    <button class="btn gr sm" onclick="addIngRow()">+ إضافة مكون</button>
+
+    <div class="field-label">خطوات التحضير</div>
+    <div id="stepRows"></div>
+    <button class="btn gr sm" onclick="addStepRow()">+ إضافة خطوة</button>
+
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button class="btn g" style="flex:1" onclick="saveEditItem()">حفظ</button>
+      <button class="btn r" style="flex:1" id="deleteItemBtn" onclick="deleteCurrentItem()">حذف الصنف</button>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYEES MODAL (admin) -->
+<div class="mb mbfull" id="employeesModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('employeesModal')">✕</button>
+    <div style="font-weight:900;font-size:16px;margin-bottom:10px" id="empFormTitle">إضافة موظف جديد</div>
+
+    <div class="field-label">كود الموظف</div>
+    <input class="inp" id="empCode" placeholder="مثال: 101"/>
+    <div class="field-label">اسم الموظف</div>
+    <input class="inp" id="empName" placeholder="الاسم بالكامل"/>
+    <div class="field-label">الفرع</div>
+    <input class="inp" id="empBranch" placeholder="اسم الفرع"/>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn g" id="empSaveBtn" style="flex:1" onclick="addEmployee()">إضافة موظف</button>
+      <button class="btn gr hidden" id="empCancelBtn" style="flex:1" onclick="cancelEditEmployee()">إلغاء</button>
+    </div>
+
+    <div class="field-label">أو ارفع ملف أكواد دفعة واحدة (CSV أو JSON)</div>
+    <div class="sub" style="margin-bottom:8px">صيغة CSV: كود,اسم,فرع — كل موظف في سطر</div>
+    <button class="btn y sm" onclick="document.getElementById('empFile').click()">📂 رفع ملف الأكواد</button>
+    <input type="file" id="empFile" accept=".csv,.json,text/csv,application/json" class="hidden" onchange="importEmployeesFile(event)"/>
+
+    <div class="field-label">لو الأكواد الافتراضية مش ظاهرة</div>
+    <button class="btn d sm" onclick="restoreDefaultEmployees()">🔄 استعادة الأكواد الافتراضية الناقصة</button>
+
+    <div class="section-title">قائمة الموظفين (<span id="empCountLabel"></span>)</div>
+    <input class="inp" id="empSearchBox" placeholder="ابحث بالاسم أو الكود..." style="margin-bottom:10px" oninput="renderEmployeesList()"/>
+    <div id="employeesList"></div>
+  </div>
+</div>
+
+<!-- CERTIFICATE SETTINGS MODAL (admin) -->
+<div class="mb mbfull" id="certSettingsModal">
+  <div class="mw">
+    <button class="close-x" onclick="closeModal('certSettingsModal')">✕</button>
+    <div style="font-weight:900;font-size:16px;margin-bottom:10px">🖋️ إعدادات الشهادة</div>
+
+    <div class="field-label">عنوان الشهادة (إنجليزي/فرنساوي)</div>
+    <input class="inp" id="certTitleEn" placeholder="مثال: HACCP & Hygiène"/>
+    <div class="field-label">عنوان الشهادة (عربي)</div>
+    <input class="inp" id="certTitleAr" placeholder="مثال: سلامة الغذاء"/>
+    <div class="field-label">اسم الامتحان الكامل (يظهر تحت "قد أتم بنجاح امتحان")</div>
+    <input class="inp" id="certExamName" placeholder="مثال: HACCP & Hygiène · Food Safety - سلامة الغذاء"/>
+    <div class="field-label">المستوى</div>
+    <input class="inp" id="certLevel" placeholder="مثال: المستوى الأول"/>
+
+    <div class="section-title">التوقيع الأول</div>
+    <div class="field-label">الاسم (إنجليزي)</div>
+    <input class="inp" id="sig1En" placeholder="Chef Shraby"/>
+    <div class="field-label">الاسم (عربي)</div>
+    <input class="inp" id="sig1Ar" placeholder="شيف شرابي"/>
+
+    <div class="section-title">التوقيع الثاني</div>
+    <div class="field-label">الاسم (إنجليزي)</div>
+    <input class="inp" id="sig2En" placeholder="Chef Hassan Mohamed"/>
+    <div class="field-label">الاسم (عربي)</div>
+    <input class="inp" id="sig2Ar" placeholder="شيف حسن محمد"/>
+
+    <button class="btn g" style="width:100%;margin-top:16px" onclick="saveCertSettings()">حفظ الإعدادات</button>
+  </div>
+</div>
+
+<script>
+/* ===================== DEFAULT DATA (built-in) ===================== */
+const DEFAULT_DATA = {"Salad": [{"name_en": "Sweet Potato Salad", "name_ar": "سلطة البطاطا الحلوة", "ingredients": [["60", "جرام", "كينوا"], ["20", "جرام", "جرجير"], ["20", "جرام", "بلسمك دريسنج"], ["100", "جرام", "روستد سويت بوتيتو"], ["50", "جرام", "جوت تشيز كرامبد"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان", "يتم تقطيع البطاطا كما موضح بالصوره وعمل روستينج في الفرن لمدة 12 دقيقة على درجة حرارة 180", "في وعاء يتم وضع الجرجير والبطاطا الروستد والكينوا", "ثم نضع البلسمك دريسنج ونقلب جيدا", "في البولة يتم وضع المكونات وكرامب الجوت تشيز أعلى السلطة"]}, {"name_en": "Egg Potato Salad", "name_ar": "سلطة البيض والبطاطس", "ingredients": [["3", "عدد", "بيض مسلوق"], ["5", "جرام", "بارميجان"], ["1/2 من 3", "بورشن/عدد", "بطاطس 1980"], ["70", "جرام", "مايونيز ديجون دريسنج sub"], ["10", "جرام", "بصل مارينيتد"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان", "يتم تقطيع 3 عدد بطاطس 1980 إلى 12 قطعة (كيوبس)", "يتم عمل ديب فراينج للبطاطس بعد التقطيع حتى تصبح جاهزة", "يتم سلق البيض (تسوية كاملة) ثم يتم تقطيعه إلى أربع أجزاء كما موضح بالصورة", "يتم وضع الدريسنج على البطاطس بعد التسوية وتقليبها جيداً ثم يتم وضع البيض وتقلب برفق", "يتم وضع المكونات في البولة ثم وضع البصل المارينيتد أعلى السلطة", "يتم بشر البارميزان وتقدم", "ملحوظة: يتم تسوية البيض 12 دقيقة كاملة بدون تبريد عليه"]}, {"name_en": "Halloumi Salad", "name_ar": "سلطة الحلوم", "ingredients": [["50", "جرام", "خيار (مقشر) small dice"], ["1/4", "cup", "بقدونس مفروم"], ["15", "جرام", "بصل أحمر برنواز"], ["1/4", "cup", "رمان حب"], ["50", "جرام", "خس باتافيا مفروم"], ["60", "جرام", "طماطم برنواز"], ["25", "جرام", "دبس رمان دريسنج sub"], ["5/100", "جرام/عدد", "حلوم 1.5*2.5 سم"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان يتم غسل الخضار جيدا", "يتم تقشير الخيار ثم تقطيعه مكعبات صغيرة كما موضح بالصورة", "يتم تقطيع الطماطم برنواز على أن تكون مخلاة من البذور وتقطيع الخس الباتافيا", "يتم عمل جريلينج للجبن الحلوم جيداً مع التأكد من الحصول على اللون الذهبي", "يتم وضع المكونات ما عدا الجبن الحلوم في وعاء مع دريسنج دبس الرمان مع التقليب الجيد", "يتم وضع المكونات في البولة ثم وضع الجبن الحلوم أعلى السلطة كما موضح بالصورة", "يتم وضع دريزل من دريسنج الرمان أعلى السلطة"]}, {"name_en": "Burrata Bresaola", "name_ar": "برياتا بريزاولا", "ingredients": [["75", "جم", "جرجير إيطالي"], ["20", "جم", "عين جمل كراميلايز sup"], ["10", "جم", "بارميزان شيفد"], ["70", "جم", "بلسمك دريسنج sup"], ["10", "جم", "بلسمك ريدكشن sup"], ["8/70", "جم/عدد", "برزاولا"], ["120", "جم", "بوراتا (كولد)"], ["40", "جم", "طماطم شيري"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تقليب الجرجير مع الطماطم الشيري بالدريسنج", "يتم التقديم في الطبق المتفق عليه ثم يوضع الجبنة في منتصف الطبق كما موضح بالصورة ثم وضع البلسمك ريدكشن والبارميزان وعين الجمل كراميلايز ويقدم"]}, {"name_en": "Caesar", "name_ar": "سيزر", "ingredients": [["300", "جم", "خس كابوتشا"], ["20", "جم", "كريتون sub"], ["100", "جم", "سيزر دريسنج"], ["10", "جم", "بارميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تقليب الخس مع الدريسنج في بيسيمة ثم وضعه في الطبق المتفق عليه", "يتم وضع الصوص خطوط فوق السلطة ثم البارميزان المبشور أعلى السلطة كما موضح بالصورة"]}, {"name_en": "Healthy Fall Quinoa", "name_ar": "صحن كينوا الخريف", "ingredients": [["120", "جم", "كينوا مطهية"], ["50", "جم", "خيار مقشر دايس مقشر"], ["100", "جم", "جواكامولي sub"], ["20", "جم", "بصل أحمر برنواز"], ["50", "جم", "جزر دايس مسلوق"], ["50", "جم", "فلفل ألوان برنواز"], ["50", "جم", "قرع مشوي دايس"], ["50", "جم", "ليمون فينيجريت sub"], ["50", "جم", "طماطم شيري (أنصاف)"], ["80", "جم", "خس باتافيا"], ["1", "اسليز", "عيش ساور دو"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تقليب مكونات الخضروات مع الملح والفينيجريت ثم يتم وضع الجواكامولي في قاعدة بولة السلاطة، ثم يتم وضع المكونات أعلى الخس", "مراعاة تجانس الألوان معاً وإيضاح شكل الجواكامولي مع السلطة"]}, {"name_en": "Salmon Vlax", "name_ar": "سلطة السلمون", "ingredients": [["100", "جم", "خس باتافيا أخضر"], ["30", "جم", "طماطم شيري"], ["20", "جم", "جرجير إيطالي"], ["200", "جم", "أفوكادو دايس"], ["20", "جم", "بصل أخضر ديجونلز"], ["2", "جم", "سمسم أبيض"], ["5", "جم/عدد", "كابري"], ["80", "جم", "ليمون فينيجريت sub"], ["1", "جم", "شبت مفروم"], ["1", "6جم", "شبت أوراق"], ["70", "جم", "سموكد سالمون"], ["100", "جم", "كريمي بيستو sub"], ["1", "اسليز", "عيش ساور دو"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تقليب الخس مع الجرجير الإيطالي والليمون فينيجريت مع الشبت المفروم لتحقيق الليمون ديل فينيجريت ودمج المكونات جيداً", "ثم يتم فرد البيستو كريمي تشيز على قاعدة البولة ووضع الخس في منتصف البولة كما هو موضح بالصورة", "ثم يتم توزيع السالمون والبصل الديجونلز والسمسم والطماطم الشيري وأخيراً أوراق الشبت وترفع أعلى الخس", "مراعاة تجانس الألوان معاً وإيضاح شكل الكريمي بيستو مع السلطة"]}, {"name_en": "Chicken Ranch", "name_ar": "سلطة تشيكن رانش", "ingredients": [["100", "جم", "خس باتافيا أخضر"], ["30", "جم", "طماطم شيري"], ["20", "جم", "سويت كورن"], ["200", "جم", "أفوكادو دايس"], ["20", "جم", "فاصوليا حمراء"], ["80", "جم", "رانش دريسنج sub"], ["120", "جم", "صدور فراخ"], ["1", "اسليز", "عيش ساوردو"], ["1", "عدد", "بيض مطهي ميديم"], ["100", "جم", "كريمي رانش دراي sub"], ["1", "جم", "فلفل مجروش"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تقليب الخس وروكا والأفوكادو والطماطم الشيري والفاصوليا والسويت كورن وكوبس الفراخ ويتم تقليبهم مع الرانش", "ثم يتم فرد كريمي تشيز صن دراي على قاعدة البولة ووضع المكونات في منتصف البولة كما هو موضح بالصورة ثم يتم توضيح المكونات كما موضح بالصورة", "يتم وضع البيض مقسوم نصفين ووضع فلفل أسود مجروش ومعها ريمكان الرانش"]}, {"name_en": "Shrimp Salad", "name_ar": "سلطة الجمبري", "ingredients": [["100", "جم", "خس باتافيا أخضر"], ["10", "قطعة", "جمبري لحم"], ["50", "جم", "جرجير إيطالي"], ["100", "جم", "كريمي تشيز بيمنتو sup"], ["200", "جم", "أفوكادو دايس"], ["1", "جم", "شبت"], ["50", "جم", "طماطم شيري"], ["70", "جم", "ليمون فينيجريت sub"], ["25", "جم", "خيار مارينيتد شفد"], ["1", "عدد", "ساوردو"], ["25", "جم", "خيار مارينيتد sup"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم فرد الكريمي تشيز بيمنتو في حواف الطبق من الداخل ثم يتم خلط الخس المكس مع الروكا وباقي المكونات مع الليمون فينيجريت", "ثم يتم طهي الجمبري ثم يتم التتبيل ثم رفعه من على النار", "ثم يتم وضع الجمبري على السلطة بالشكل الموضح بالصورة والخيار المارينيتد في المنتصف كما بالصورة وأوراق الشبت"]}], "Bagels": [{"name_en": "Bagel Smoked Salmon", "name_ar": "بيجل سموكد سالمون", "ingredients": [["1", "لقمة", "عيش بيجل"], ["20", "جرام", "بصل مرينيتد sup"], ["70", "جرام", "كريمي تشيز"], ["3", "جرام", "شبت"], ["70", "جرام", "سموكد سالمون"], ["20", "جرام", "جرجير إيطالي"], ["5", "جرام/عدد", "كابري"]], "steps": ["يتم تسخين القمة في الفرن لمدة 30 ثانية فقط (كاملة قبل التقطيع)", "يتم وضع كريمي تشيز على القمة من الجانبين ويتم فردة", "ثم يتم وضع الجرجير والسالمون", "يتم إضافة 5 عدد كابري و20 جم بصل مرينيتد يتم توزيعه بشكل كامل على السالمون مع الشبت كما موضح بالصورة", "يتم تقطيعه إلى نصفين ويقدم في الطبق المتفق عليه"]}, {"name_en": "Bagel Bresaola", "name_ar": "بيجل بريزاولا", "ingredients": [["1", "لقمة", "عيش بيجل"], ["10", "جرام", "درسنج ترافل sub"], ["70", "جرام", "كريمي تشيز"], ["35", "جرام", "برزاولا"], ["20", "جرام", "جرجير إيطالي"]], "steps": ["يتم تسخين القمة في الفرن لمدة 30 ثانية فقط (كاملة قبل التقطيع)", "يتم وضع كريمي تشيز على القمة من الجانبين ويتم فردة", "ثم يتم وضع الجرجير والبرزاولا ثم يتم وضع الدرسنج على البرزاولا ويقدم", "يتم تقطيعه إلى نصفين ويقدم في الطبق المتفق عليه"]}, {"name_en": "Bagel Truffle Roast Beef", "name_ar": "بيجل تراف روست بيف", "ingredients": [["1", "لقمة", "عيش بيجل"], ["60", "جرام", "روست بيف sup"], ["60", "جرام", "ترافل مايو sup"], ["50", "جرام", "إيمينتال تشيز"], ["20", "جرام", "خس باتافيا"], ["20/5", "عدد/جرام", "خيار مخلل سليز sub"]], "steps": ["يتم تسخين القمة في الفرن لمدة 30 ثانية فقط (كاملة قبل التقطيع)", "يتم وضع واحدة ملعقة (تست) ترافل مايو على القمة من الجانبين ويتم فردها", "يتم وضع الخس مع الخيار المخلل ويتم وضع البيف عليها", "يتم وضع 3 أنصاف شيدر أسليز كما موضح بالصورة", "يتم عمل ميلتد للجبنة (بشبوري)", "يتم تقطيعه إلى نصفين ويقدم في الطبق المتفق عليه"]}, {"name_en": "Bagel Turkey Paprika", "name_ar": "بيجل تركي بابريكا", "ingredients": [["1", "لقمة", "عيش بيجل"], ["60", "جرام", "تركي بابريكا"], ["60", "جرام", "جارلك مايو sub"], ["60", "أوردر", "شيدر أبيض (سليز)"], ["20", "جرام", "خس باتافيا"], ["20/5", "عدد/جرام", "خيار مخلل سليز sub"]], "steps": ["يتم تسخين القمة في الفرن لمدة 30 ثانية فقط (كاملة قبل التقطيع)", "يتم وضع واحدة ملعقة (تست) جارلك مايو على القمة من الجانبين ويتم فردها", "يتم وضع الخس مع الخيار المخلل ويتم وضع التركي عليها", "يتم وضع 3 أنصاف إيمينتال أسليز كما موضح بالصورة", "يتم عمل ميلتد للجبنة (بشبوري)", "يتم تقطيعه إلى نصفين ويقدم في الطبق المتفق عليه"]}, {"name_en": "Garlic Bagel", "name_ar": "بيجل الثوم", "ingredients": [["1", "لقمة", "عيش بيجل"], ["10", "جرام", "زبدة"], ["60", "جرام", "شيدر أبيض (مبشور)"], ["2", "جرام", "ملح"], ["10", "جرام", "ثوم فريش (مفروم)"], ["3", "جرام", "فلفل أسود"], ["10", "جرام", "بقدونس (مفروم)"], ["40", "جرام", "شيدر أبيض (أسليز)"], ["5", "جرام", "بارميزان"]], "steps": ["يوضع 60 جم شيدر أبيض مبشور مع الثوم والزبدة والبقدونس مع الملح والفلفل ويتم تقليبهم جيداً", "يتم فتح القمة من الأعلى على ثمانية (بيتزا) مع مراعاة عدم فصلها عن بعض", "يتم عمل استافد بالمكس الذي تم تحضيره في الثمانية جنباً", "ثم يتم تقطيع أسليز شيدر أبيض إلى 4 ويتم وضعه أعلى القمة كما موضح بالصورة", "يتم دخولها الفرن على درجة حرارة 180 حتى تصبح الجبنة شفافة بنسبة 50%", "يتم بشر البارميزان أعلى القمة ثم يقدم"]}, {"name_en": "Bagel Pesto Halloumi", "name_ar": "بيجل بيستو حلوم", "ingredients": [["1", "لقمة", "عيش بيجل"], ["50", "جرام", "بستو ريحان"], ["3/90", "جرام/أسليز", "حلوم تشيز/أسليز"], ["5", "جرام", "عسل أبيض"], ["20", "جرام", "جرجير إيطالي"], ["5", "جرام", "زيت زيتون"], ["15", "جرام", "صن دراي توميتو"], ["2", "جرام", "ملح"], ["2", "جرام", "فلفل أسود"]], "steps": ["يتم تسخين القمة في الفرن لمدة 30 ثانية فقط (كاملة قبل التقطيع)", "يتم وضع واحدة ملعقة (تست) بيستو ريحان على القمة من الجانبين ويتم فردها", "يتم وضع الجرجير والصن دراي توميتو", "تقطع الحلوم تشيز 3 أسليز 90 جم ويتم وضعها في 5 جم عسل أبيض و5 جم زيت زيتون", "توضع في طاسة تيفال على النار حتى تصبح جاهزة ويتم وضعها على الصن دراي توميتو ويقدم كما موضح بالصورة", "يتم تقطيعه إلى نصفين ويقدم في الطبق المتفق عليه"]}], "Breakfast": [{"name_en": "Benedict Bacon", "name_ar": "بينديكت بيكون", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["70", "جم", "جواكامولي sub"], ["5", "جم", "سبايسي سبرنكل"], ["20", "جم", "بيبي روكا"], ["6 قطع", "جم", "بطاطس 15*15"], ["20", "جم", "صن دراي توماتو"], ["1", "جم", "ملح"], ["60 جم/شريحة 2", "جم", "بيف بيكون مطهي"], ["5", "جم", "زيت ترافل"], ["20", "جم", "جبنة ماعز"], ["5", "جم", "جبنة برميزان"], ["80", "جم", "بيمينتو هولنديز sub"], ["1", "جم", "فلفل أسود مجروش"], ["2", "عدد", "بيض"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الجواكامولي ثم روكا ثم صن دراي توماتو", "ثم يتم طهي البيض بوتشينج مع مراعاة سيولة الصفار وعدم التمادي في الطهي", "ثم يتم طهي البيف بيكون سوتيه ووضعه أعلى الصن دراي توماتو ثم وضع البيض البوتشينج أعلاه", "ثم يتم تسخين صوص الهولنديز بوضع ملعقة صغيرة ماء ساخن وتقليبه جيداً ثم وضع الصوص أعلى البيض", "ثم يتم عمل برزنتيشن أعلى الصوص", "يتم عمل ديب فراينج للبطاطس المطهية جزئياً مسبقاً لمدة 8 دقائق مع مراعاة الطهي من الداخل جيداً مع الكرملة الذهبية فقط من الخارج", "عند الإخراج يتم تقليبها بالملح ثم مع الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت ترافل"]}, {"name_en": "Turkey Vans", "name_ar": "تيركي فانس", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["70", "جم", "روستد بيبر كريمي تشيز sub"], ["5", "جم", "سبايسي سبرنكل"], ["15", "جم", "خيار مخلل sub"], ["6 قطع", "جم", "بطاطس 15*15"], ["30", "جم", "جبنة إيمينتال"], ["1", "جم", "ملح"], ["60 جم/شريحة 2", "عدد", "تركي"], ["5", "جم", "زيت ترافل"], ["80", "جم", "بستو هولنديز sub"], ["5", "جم", "جبنة برميزان"], ["2", "عدد", "بيض"], ["1", "جم", "فلفل أسود مجروش"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الروستد كريمي تشيز ثم الخيار المخلل", "ثم يتم طهي البيض بوتشينج مع مراعاة سيولة الصفار وعدم التمادي في الطهي", "ثم يتم وضع الجبنة السويسري ثم وضع البيض البوتشينج أعلاه", "ثم يتم تسخين صوص الهولنديز بوضع ملعقة صغيرة ماء ساخن وتقليبه جيداً ثم وضع الصوص أعلى البيض", "ثم يتم عمل برزنتيشن أعلى الصوص", "ديب فراينج للبطاطس كما سبق - 8 دقائق، ثم تتبيلها بالملح والسبرنكل، رصها، بشر برميزان، ثم زيت ترافل"]}, {"name_en": "Bushed Cheese", "name_ar": "بوشد تشيز", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["50", "جم", "معجون زيتون"], ["5", "جم", "سبايسي سبرنكل"], ["30", "جم", "خيار تشيفد"], ["6 قطع = 200", "جم", "بطاطس 15*15"], ["2", "عدد", "بيض"], ["1", "جم", "ملح"], ["30", "جم", "جبنة شيدر أبيض"], ["5", "جم", "زيت ترافل"], ["80", "جم", "هيربز هولنديز sub"], ["5", "جم", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع معجون الزيتون ثم الخيار التشيفد ووضع الجبنة الشيدر وتدخل الفرن لعمل ميلتد", "ثم يتم طهي البيض بوتشينج مع مراعاة سيولة الصفار وعدم التمادي في الطهي", "ثم يتم تسخين صوص الهولنديز بوضع ملعقة صغيرة ماء ساخن وتقليبه جيداً ثم وضع الصوص أعلى البيض", "ثم يتم بشر الجبن البرميزان ثم عمل برزنتيشن أعلى الصوص", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل"]}, {"name_en": "Charcoal Smoky Salmon", "name_ar": "تشاركول سموكي سالمون", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["70", "جم", "كريمي تشيز"], ["5", "جم", "سبايسي سبرنكل sub"], ["15", "جم", "جرجير إيطالي"], ["6 قطع", "جم", "بطاطس 15*15"], ["1", "جم", "شبت أوراق"], ["1", "جم", "ملح"], ["5", "جم", "زيت ريحان sub"], ["5", "جم", "زيت ترافل"], ["50", "جم", "سموكد سالمون"], ["5", "جم", "جبنة برميزان"], ["80", "جم", "هولنديز sub"], ["1", "جم", "فلفل أسود مجروش"], ["2", "عدد", "بيض"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الكريمي تشيز ثم الجرجير الإيطالي ثم يتم طهي البيض بوتشينج مع مراعاة سيولة الصفار وعدم التمادي في الطهي ثم وضع البيض البوتشينج أعلاه", "ثم يتم تسخين صوص الهولنديز ووضعه أعلى البيض", "ثم يتم وضع الشبت ثم عمل برزنتيشن أعلى الصوص ووضع زيت الريحان", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل"]}, {"name_en": "Classic Scramble", "name_ar": "سكرامبل كلاسيك", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["10", "جم", "زبدة"], ["5", "جم", "سبايسي سبرنكل"], ["50", "جم", "كريمة طهي"], ["6 قطع", "جم", "بطاطس 15*15"], ["3", "عدد", "بيض"], ["1", "جم", "ملح"], ["10", "جم", "جبنة برميزان"], ["5", "جم", "زيت ترافل"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الزبدة ثم يوضع البيض ويتم طهيه مع كريمة الطهي على النار مع التقليب المستمر", "مع مراعاة التوقف عن الطهي عند الوصول لتخثر البيض والحفاظ على لمعته وطراوته", "ثم يوضع على شريحة الساوردو ويبشر البارميزان أعلاه", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل"]}, {"name_en": "Pastrami Scramble", "name_ar": "سكرامبل بسطرمة", "ingredients": [["1", "شريحة", "ساوردو سماكة 1.5 سم"], ["10", "جم", "زبدة"], ["5", "جم", "سبايسي سبرنكل"], ["50", "جم", "كريمة طهي"], ["6 قطع", "جم", "بطاطس 15*15"], ["3", "عدد", "بيض"], ["25", "جم", "بسطرمة"], ["1", "جم", "ملح"], ["10", "جم", "جبنة برميزان"], ["5", "جم", "زيت ترافل"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الزبدة ثم يوضع البيض ويتم طهيه مع كريمة الطهي وقطع البسطرمة على النار مع التقليب المستمر", "مع مراعاة التوقف عن الطهي عند الوصول لتخثر البيض والحفاظ على لمعته وطراوته", "ثم يوضع على شريحة الساوردو ويبشر البارميزان أعلاه", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل"]}, {"name_en": "Classic Rolled Omelet", "name_ar": "أومليت رول كلاسيك", "ingredients": [["1", "شريحة", "ساوردو دو"], ["3", "عدد", "بيض"], ["5", "جم", "سبايسي سبرنكل sub"], ["2", "جم", "فلفل أسود مجروش"], ["6 قطع", "جم", "بطاطس 15*15"], ["10", "جم", "جبنة برميزان"], ["1", "جم", "ملح"], ["10", "جم", "زبدة"], ["5", "جم", "زيت ترافل"], ["30", "جم", "مايو بنجر sub"], ["1", "جم", "فلفل أسود مجروش"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "ثم يتم وضع الزبدة وطهي الأومليت ويتم التقليب بعد حوالي دقيقة مع مراعاة عدم الكرملة نهائياً", "ثم يتم لف الأومليت ووضعه أعلى شريحة الساوردو ووضع جبنة البرميزان أعلى الأومليت", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل", "ملحوظة: يتم وضع المايو بنجر فقط في حالة أن السايد بطاطس فقط"]}, {"name_en": "Western Omelet", "name_ar": "أومليت ويسترن", "ingredients": [["1", "شريحة", "ساوردو دو"], ["3", "عدد", "بيض"], ["5", "جم", "سبايسي سبرنكل sub"], ["2", "جم", "فلفل أسود مجروش"], ["6 قطع", "جم", "بطاطس 15*15"], ["10", "جم", "جبنة برميزان"], ["1", "جم", "ملح"], ["10", "جم", "زبدة"], ["30", "جم", "شيدر أبيض"], ["5", "جم", "زيت ترافل"], ["30", "جم", "مايو بنجر"], ["1", "جم", "فلفل أسود مجروش"], ["30", "جم", "كريمي تشيز بستو sub"], ["20", "جم", "طماطم روستد sub"], ["40", "جم", "مشروم مرينيتد sub"], ["5", "جم", "جرجير"], ["50", "جم", "فلفل روستد"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة الساوردو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "ثم يتم وضع الزبدة وطهي الأومليت ويتم التقليب بعد حوالي دقيقة مع مراعاة عدم الكرملة نهائياً", "يتم تسخين الفلفل والمشروم مع الطماطم روستد جيداً، عمل سبريد بالكريمي بستو، حشو الأومليت بنصف الخضروات، لف الأومليت ووضع جبنة كاشكافال أعلاه بطول الأومليت", "يوضع الأومليت على صاج الخبز وباقي الخضروات بجانبه، ثم يدخل الفرن على 200 درجة لمدة 2 دقيقة تقريباً أو حتى ذوبان الجبنة", "يوضع الأومليت أعلى الخبز وباقي الخضروات أعلاه", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل", "ملحوظة: يتم وضع المايو بنجر فقط في حالة أن السايد بطاطس فقط"]}, {"name_en": "Familiar Mushrooms Omelet", "name_ar": "أومليت المشروم", "ingredients": [["1", "شريحة", "ساوردو دو طولية"], ["3", "عدد", "بيض"], ["5", "جم", "سبايسي سبرنكل sub"], ["70", "جم", "مشروم مارينيتد إسلايز sub"], ["30", "جم", "كريمي تشيز"], ["30", "جم", "مكس تشيز"], ["1", "جم", "فلفل أسود مجروش"], ["10", "جم", "زبدة"], ["40", "جم", "سبانخ مطهية"], ["1", "جم", "فلفل أسود مجروش"], ["6 قطع", "جم", "بطاطس 15*15"], ["1", "جم", "ملح"], ["5", "جم", "زيت ترافل"], ["5", "جم", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل ومراعاة الكرملة", "ثم يتم وضع الزبدة وطهي الأومليت ويتم التقليب بعد حوالي دقيقة مع مراعاة عدم الكرملة نهائياً", "يتم تسخين المشروم والسبانخ المطهو مسبقاً جيداً، عمل سبريد بالكريمي تشيز، حشو الأومليت بنصف الخضروات", "لف الأومليت ووضع جبنة مكس شيدر أبيض وأحمر أعلاه بطول الأومليت، يوضع على صاج الخبز مع باقي الحشو بجانبه ثم الفرن على 200 لمدة 2 دقيقة أو حتى ذوبان الجبنة", "يوضع الأومليت أعلى الخبز وباقي كمية الخضروات أعلاه", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل", "ملحوظة: يتم وضع المايو بنجر فقط إذا كان السايد بطاطس فقط"]}, {"name_en": "Denver Omelet", "name_ar": "أومليت دنفر", "ingredients": [["1", "شريحة", "ساوردو دو طولية"], ["3", "عدد", "بيض"], ["5", "جم", "سبايسي سبرنكل"], ["70", "جم", "سموكد تركي"], ["40", "جم", "فلفل ألوان مشوي"], ["30", "جم", "بومينتو تشيز sub"], ["1", "جم", "فلفل أسود مجروش"], ["10", "جم", "زبدة"], ["30", "جم", "شيدر أبيض"], ["20", "جم", "بصل كرمالايزد sub"], ["6 قطع", "جم", "بطاطس 15*15"], ["1", "جم", "ملح"], ["5", "جم", "زيت ترافل"], ["5", "جم", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل ومراعاة الكرملة", "ثم يتم وضع الزبدة وطهي الأومليت ويتم التقليب بعد حوالي دقيقة مع مراعاة عدم الكرملة نهائياً", "يتم تسخين السموكد تركي والفلفل ألوان المشوي والبصل الكرمالايزد المطهو مسبقاً، حشو الأومليت بنصف الحشو، لف الأومليت ووضع جبنة شيدر أبيض أعلاه بطول الأومليت", "يوضع على صاج الخبز مع باقي الحشو بجانبه ثم الفرن على 200 لمدة 2 دقيقة أو حتى ذوبان الجبنة", "يوضع الأومليت أعلى الخبز وباقي كمية الخضروات أعلاه", "ديب فراينج للبطاطس كما سبق، ثم تتبيلها ورصها وبشر برميزان وزيت ترافل", "ملحوظة: يتم وضع المايو بنجر فقط في حالة أن السايد بطاطس فقط"]}], "Pizza": [{"name_en": "Pizza Margherita", "name_ar": "بيتزا مارجريتا", "ingredients": [["10", "جرام", "بارميزان"], ["250", "جرام", "موزاريلا شرائح"], ["1", "جرام", "أوريجانو"], ["70", "جرام", "صوص بيتزا sub"], ["10", "جرام", "زيت ثوم sub"], ["300", "جرام", "عجينة بيتزا sub"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن", "يتم فرد عجينة البيتزا (مردانا) على شكل دائري ثم يتم وضعها على الإسكرينة المخصصة لها", "يتم وضع صوص الطماطم عليها وتغطيتها كاملة بالصوص حتى الأطراف ثم وضع الأوريجانو فوق الصوص", "يوضع الجبنة الموتزاريلا عليها وتغطى كاملة بها", "يتم دخولها الفرن بالإسكرينة حتى تصبح جاهزة مع مراعاة أنها تكون (كريسبي) جداً كما موضح بالصور", "يتم تقطيعها (6)", "يتم بشر البارميزان على الأطراف فقط وتقدم"]}, {"name_en": "Pizza Pepperoni", "name_ar": "بيتزا بيبروني", "ingredients": [["300", "جرام", "عجينة بيتزا"], ["100ج/50ع", "جرام/عدد", "ببروني"], ["70", "جرام", "صوص بيتزا"], ["10", "جرام", "بارميزان"], ["100", "جرام", "موزاريلا مبشور"], ["10", "جرام", "زيت ثوم sub"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن", "يتم فرد عجينة البيتزا (مردانا) على شكل دائري ووضعها على الإسكرينة المخصصة لها", "يتم وضع صوص الطماطم عليها وتغطيتها كاملة بالصوص حتى الأطراف", "يوضع الجبنة الموتزاريلا عليها وتغطى كاملة بها", "يوضع البيبروني عليها بالكامل", "يتم دخولها الفرن بالإسكرينة حتى تصبح جاهزة (كريسبي) جداً", "يتم تقطيعها (6)، ويتم بشر البارميزان على الأطراف فقط وتقدم"]}, {"name_en": "Pizza Stretchateli Pepperoni", "name_ar": "بيتزا ستريتشاتيلي بيبروني", "ingredients": [["300", "جرام", "عجينة بيتزا"], ["80", "جرام", "هوت هني sub"], ["70", "جرام", "صوص بيتزا sub"], ["1", "بورشن", "بوراتا (فروزن)"], ["100", "جرام", "موزاريلا مبشور"], ["10", "جرام", "بارميزان"], ["80ج/30ع", "جرام/عدد", "ببروني"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن (فوق 100 درجة، تحت 350 درجة)", "يتم فرد عجينة البيتزا (مردانا) على شكل دائري ووضعها على الإسكرينة المخصصة لها", "يتم وضع صوص الطماطم وتغطيتها كاملة بالصوص حتى الأطراف، ثم الجبنة الموتزاريلا وتغطى كاملة بها", "يوضع البيبروني عليها بالكامل، ثم تدخل الفرن بالإسكرينة حتى تصبح جاهزة (كريسبي) جداً", "يتم تقطيعها (6)", "يتم تجهيز 1 أوردر بوراتا في بولة وتقليبها جيداً (شوكة) حتى تصبح مكس", "يوضع أوردر البوراتا بالتساوي على كل أسليز على شكل (روزتا)", "يوضع صوص هوت هني بإسكويزر أعلى البيتزا ويتم خروج ريمكال معها وتقدم كما بالصورة", "يتم بشر البارميزان على الأطراف فقط وتقدم"]}, {"name_en": "Pizza Buffalo Ranch", "name_ar": "بيتزا بافلو رانش", "ingredients": [["300", "جرام", "عجينة بيتزا"], ["1", "أوردر", "تشكن بوبس sub"], ["80", "جرام", "صوص بيري بيري sub"], ["100", "جرام", "رانش صوص"], ["100", "جرام", "موزاريلا مبشور"], ["15", "جرام", "بارميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن (فوق 100 درجة، تحت 350 درجة)", "يتم فرد عجينة البيتزا (مردانا) على شكل دائري ووضعها على الإسكرينة المخصصة لها", "يتم وضع صوص الرانش وتغطيتها كاملة بالصوص حتى الأطراف", "يوضع الجبنة الموتزاريلا وتغطى كاملة بها", "تدخل الفرن بالإسكرينة حتى تصبح جاهزة (كريسبي) جداً، يتم تقطيعها (6) وتقدم", "يتم توزيع التشكن بوبس عليها بالتساوي مع مراعاة عدم تصفيتها جيداً من الطاسة", "يوضع صوص الرانش عليها بالإسكويزر ويقدم كما موضح بالصورة", "يتم بشر البارميزان عليها كلها حتى الأطراف وتقدم"]}, {"name_en": "Pizza Anchovies", "name_ar": "بيتزا أنشوجة", "ingredients": [["300", "جرام", "عجينة بيتزا"], ["25", "جرام", "زيتون أسود"], ["70", "جرام", "صوص بيتزا"], ["10", "جرام", "بارميزان"], ["100", "جرام", "موزاريلا مبشور"], ["1", "علبة", "أنشوجة"], ["1", "جرام", "أوريجانو"], ["10", "جرام", "زيت ثوم sub"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن (فوق 100 درجة، تحت 350 درجة)", "يتم فرد عجينة البيتزا (مردانا) على شكل دائري ووضعها على الإسكرينة المخصصة لها", "يتم وضع صوص الطماطم وتغطيتها كاملة بالصوص حتى الأطراف، ثم الجبنة الموتزاريلا وتغطى كاملة بها", "توضع عليها الأنشوجة والزيتون بالتساوي", "تدخل الفرن بالإسكرينة حتى تصبح جاهزة (كريسبي) جداً", "يتم تقطيعها (6) وتقدم، يتم بشر البارميزان على الأطراف فقط وتقدم"]}, {"name_en": "Feter (Fatir Honey)", "name_ar": "فطير عسل", "ingredients": [["500", "جرام", "عجين فطير sub"], ["125", "جرام", "طحينة خام"], ["125", "جرام", "عسل أسود"], ["125", "جرام", "جبن مش"], ["125", "جرام", "عسل أبيض"], ["50", "جرام", "شمع عسل"]], "steps": ["التأكد من سلامة المنتج ونظافة المكان والتأكد من درجة حرارة الفرن (170 درجة)", "يتم وضع عجين الفطير في الصاج المخصص له ويوضع في الكونفيكشن", "يتم ضبط تايمر بـ27 دقيقة", "بعد مرور 15 دقيقة يتم وضع 100 جم سمن شيراتون على وجه الفطير ثم يتم استكمال التسوية", "بعد انتهاء التسوية يتم وضعها في الطبق المخصص لها مع setup الريمكانات (العسل والطحينة والمش)"]}], "Pancakes": [{"name_en": "Anti-social", "name_ar": "أنتي سوشيال", "ingredients": [["125", "جم", "عجينة بان كيك sub"], ["40", "جم", "شوكولاته نيوتيلا"], ["70", "جم", "كنافة بستاشيو"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبدة أعلى ماكينة الكريب ومسح سطح الماكينة ثم يتم وضع عجينة البان (Cup 1/3) على 3 قطع", "يتم ترك قطعة البان كيك لمدة حوالي دقيقتين قبل التقليب مع رؤية الفراغات الأولية لطهي البان كيك", "ثم يتم تقليبها وتركها دقيقتين أخرى مع مراعاة اللون الذهبي البني وكرملة المنتج جيداً", "ثم يتم توزيع قطع البان كيك في الطبق وفوق كل طبقة كمية 35 جم من الكنافة بستاشيو", "ثم يتم كمية النيوتيلا فوق الطبقة الأخيرة مع البان كيك"]}, {"name_en": "Kunafa Pistachio", "name_ar": "كنافة بستاشيو", "ingredients": [["375/3", "جم/عدد", "عجينة بان كيك sub"], ["100", "جم", "صوص نيوتيلا sub"], ["200", "جم", "كنافة بستاشيو sub"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبدة أعلى ماكينة الكريب ومسح سطح الماكينة ثم يتم وضع عجينة البان عدد 3 قطع = 1/3 (Cup) للقطعة", "يتم ترك قطعة البان كيك لمدة حوالي دقيقتين قبل التقليب مع رؤية الفراغات الأولية لطهيها", "ثم يتم تقليبها وتركها دقيقتين أخرى مع مراعاة اللون الذهبي البني وكرملة المنتج جيداً", "ثم يتم توزيع قطع البان كيك في الطبق وفوق كل طبقة كمية 100 جم من الكنافة بستاشيو", "ثم يتم كمية النيوتيلا فوق الطبقة الأخيرة مع البان كيك"]}, {"name_en": "Original", "name_ar": "أورجينال", "ingredients": [["375/3", "جم/عدد", "عجينة بان كيك sub"], ["10", "جم", "سكر بودر"], ["50", "جم", "شمع عسل"], ["باكت", "عدد", "زبدة"], ["30", "جم", "مابل سيرب"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبدة أعلى ماكينة الكريب ومسح سطح الماكينة ثم يتم وضع عجينة البان عدد 3 قطع = 1/3 (Cup) للقطعة", "يتم ترك قطعة البان كيك لمدة حوالي دقيقتين قبل التقليب مع رؤية الفراغات الأولية لطهيها", "ثم يتم تقليبها وتركها دقيقتين أخرى مع مراعاة اللون الذهبي البني وكرملة المنتج جيداً", "ثم يتم توزيع 3 قطع البان كيك في الطبق", "ثم يتم توزيع شمع العسل ووضع صوص المابل سيرب والزبدة وأخيراً رش السكر البودر أعلى المنتج"]}, {"name_en": "Banoffee", "name_ar": "بانوفي", "ingredients": [["375/3", "جم/عدد", "عجينة بان كيك sub"], ["150/1", "جم/عدد", "موز أنصاف"], ["10", "جم", "سكر بني"], ["80", "جم", "صوص دولشي دي ليتشي"], ["30", "جم", "شيكولاتة مبشورة أبيض/دارك"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبدة أعلى ماكينة الكريب ومسح سطح الماكينة ثم يتم وضع عجينة البان عدد 3 قطع = 1/3 (Cup) للقطعة", "يتم ترك قطعة البان كيك لمدة حوالي دقيقتين قبل التقليب مع رؤية الفراغات الأولية لطهيها", "ثم يتم تقليبها وتركها دقيقتين أخرى مع مراعاة اللون الذهبي البني وكرملة المنتج جيداً", "ثم يتم توزيع 3 قطع البان كيك في الطبق", "يتم بشر الشيكولاتة الأبيض والدارك أعلى المنتج", "الموز المقطع بالنصف طولياً ثم يتم وضع السكر البني أعلاه وكرملته بالبلوتورش ثم وضع صوص الدولشي دي ليتشي بشكل عشوائي ثم وضع الموز كما موضح بالصورة"]}, {"name_en": "S'mores Cake", "name_ar": "سموريس كيك", "ingredients": [["375/3", "جم/عدد", "عجينة بان كيك sub"], ["100", "جم", "صوص نيوتيلا sub"], ["5", "قطعة", "مارشيميلو أبيض"], ["3", "عدد", "بسكويت لوتس مجروش عدا واحدة"], ["30", "جم", "بندق محمص"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبدة أعلى ماكينة الكريب ومسح سطح الماكينة ثم يتم وضع عجينة البان عدد 3 قطع = 1/3 (Cup) للقطعة", "يتم ترك قطعة البان كيك لمدة حوالي دقيقتين قبل التقليب مع رؤية الفراغات الأولية لطهيها", "ثم يتم تقليبها وتركها دقيقتين أخرى مع مراعاة اللون الذهبي البني وكرملة المنتج جيداً", "ثم يتم توزيع 3 قطع البان كيك في الطبق", "ثم يتم وضع قطع الشوكولاتة كيك بشكل عشوائي مع قطع المارشيميلو ثم كرملة المارشيميلو بالبلوتورش", "ثم يتم توزيع صوص الشيكولاتة بشكل عشوائي ثم البندق المحمص المجروش وأخيراً يوضع البسكويت المجروش", "أعلى المنتج يتم وضع 1 عدد بسكوتة سليمة"]}], "Pasta": [{"name_en": "Alfredo", "name_ar": "ألفريدو", "ingredients": [["200", "جرام", "باستا مطهية sub"], ["2", "جرام", "ملح"], ["100", "جرام", "مشروم مرينيتد sub"], ["2", "جرام", "فلفل أسود"], ["300", "جرام", "كريمة لبني"], ["1/4", "مكعب", "مرقة دجاج"], ["20", "جرام", "جبنة بارميزان"], ["1", "ورقة", "ريحان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الكريمة اللبنية في الطاسة على النار ثم يتم وضع المشروم المرينيتد", "يتم وضع التوابل مع 15 جم بارميزان حتى يصبح جاهز", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم تقديمه في الطبق المتفق عليه ثم يتم بشر 5 جم بارميزان جارنش ووضع ورقة ريحان أعلى الباستا"]}, {"name_en": "Basto (Pesto)", "name_ar": "باستو (بيستو)", "ingredients": [["200", "جرام", "باستا مطهية sub"], ["2", "جرام", "فلفل أسود"], ["300", "جرام", "كريمة لبني"], ["1/4", "مكعب", "مرقة دجاج"], ["20", "جرام", "جبنة بارميزان"], ["100", "جرام", "بيستو صوص sub"], ["2", "جرام", "ملح"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الكريمة اللبنية في الطاسة على النار ثم يتم وضع صوص البيستو مع مراعاة عدم ترك البيستو حتى الغليان", "يتم وضع التوابل مع 15 جم بارميزان حتى يصبح جاهز", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم تقديمه في الطبق المتفق عليه ثم يتم بشر 5 جم بارميزان جارنش"]}, {"name_en": "Beef", "name_ar": "بيف", "ingredients": [["200", "جرام", "باستا مطهية sub"], ["2", "جرام", "ملح"], ["120", "جرام", "بيف فيليه سلايس"], ["2", "جرام", "فلفل أسود"], ["100", "جرام", "كيوبليه فلفل sub"], ["1/4", "مكعب", "مرقة دجاج"], ["20", "جرام", "جبنة بارميزان"], ["300", "جرام", "كريمة"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية اللحم في الطاسة المخصصة لها حتى يتم عملية الطهي لها", "يتم وضع الكريمة اللبنية وكوبليه الفلفل حتى تصبح جاهزة", "يتم وضع التوابل مع 15 جم بارميزان حتى يصبح جاهز", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم تقديمه في الطبق المتفق عليه ثم يتم بشر 5 جم بارميزان جارنش"]}, {"name_en": "Chicken Lemon", "name_ar": "تشكن ليمون", "ingredients": [["200", "جرام", "باستا مطهية sub"], ["2", "جرام", "فلفل أسود"], ["120", "جرام", "فراخ مرينيتد sub"], ["1/4", "مكعب", "مرقة دجاج"], ["300", "جرام", "كريمة لبني"], ["10", "جم", "كابري"], ["20", "جرام", "جبنة بارميزان"], ["5", "جرام", "شبت مفروم"], ["2", "جرام", "ملح"], ["20", "جرام", "عصير ليمون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية الفراخ وتقطيعها بعد إتمام التسوية", "يتم وضع الكريمة اللبنية حتى تصبح جاهزة", "يتم وضع التوابل مع 15 جم بارميزان حتى يصبح جاهز", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم وضع الشبت وعصير الليمون والكابري", "يتم تقديمه في الطبق المتفق عليه ثم يتم بشر 5 جم بارميزان جارنش"]}, {"name_en": "Mushroom Truffle", "name_ar": "مشروم ترافل", "ingredients": [["200", "جرام", "باستا مطهية sub"], ["2", "جرام", "ملح"], ["70", "جرام", "ترافل دوكسيل sub"], ["100", "جرام", "مشروم مارينيتد sub"], ["300", "جرام", "كريمة لبني"], ["2", "جرام", "فلفل أسود"], ["20", "جرام", "جبنة بارميزان"], ["1/4", "مكعب", "مرقة دجاج"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الكريمة اللبنية في الطاسة على النار ثم يتم وضع الدوكسيل والمشروم المرينيتد", "يتم وضع التوابل مع 15 جم بارميزان حتى يصبح جاهز", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم تقديمه في الطبق المتفق عليه ثم يتم بشر 5 جم بارميزان جارنش ووضع ورقة ريحان أعلى الباستا"]}, {"name_en": "Marinara", "name_ar": "مارينارا", "ingredients": [["250", "جرام", "باستا مطهية sub"], ["2", "جرام", "ملح"], ["450", "جم", "مارينارا صوص sub"], ["2", "جرام", "فلفل أسود"], ["10", "جرام", "جبنة بارميزان"], ["1/4", "مكعب", "مرقة دجاج"], ["5", "جرام", "زيت زيتون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع صوص المارينارا في طاسة على النار", "يتم وضع الباستا في المياه الساخنة ثم يتم تصفيتها ووضعها في الصوص المجهز", "عندما يكون جاهز يتم تقديمه في الطبق المتفق عليه ثم يتم بشر بارميزان جارنش أعلى الباستا"]}], "Soup": [{"name_en": "Tomato Soup", "name_ar": "شوربة طماطم", "ingredients": [["450", "جم", "شوربة طماطم sup"], ["1", "ودج", "ليمون"], ["10", "جم", "كريمي لباني"], ["3", "عدد", "عيش شوربة sup"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسخين بورشن الشوربة في طاسة وعمل تست عليها", "عندما تكون جاهزة توضع في البولة المتفق عليها", "يوضع عليها الكريمة كما موضح بالصورة", "تقدم مع العيش وودج الليمون"]}, {"name_en": "Mushroom Soup", "name_ar": "شوربة مشروم", "ingredients": [["450", "جم", "شوربة مشروم sup"], ["1", "ودج", "ليمون"], ["10", "جم", "زيت ريحان sup"], ["3", "عدد", "عيش شوربة sup"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسخين بورشن الشوربة في طاسة وعمل تست عليها", "عندما تكون جاهزة توضع في البولة المتفق عليها", "يوضع عليها زيت الريحان كما موضح بالصورة", "تقدم مع العيش وودج الليمون"]}], "Appetizers": [{"name_en": "Pretzel Chicken", "name_ar": "بريتزل تشيكن", "ingredients": [["80", "جم", "هاني ماسترد"], ["5", "جم", "جبنة برميزان"], ["80", "جم", "سويت شيلي"], ["5", "جم", "سبايسي سبرنكل sub"], ["10", "جم", "بريتزل مجروش"], ["6 قطع", "جم", "بطاطس 15*15"], ["4 قطع", "بورشن", "فراخ بريتزل sub"], ["1", "جم", "ملح"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم طهي البريتزل ديب فراينج على درجة حرارة 180 لمدة حوالي 6 دقائق أو حتى الحصول على اللون الذهبي المكرمل مع مراعاة الطهي كاملاً من الداخل", "يتم عمل ديب فراينج للبطاطس المطهية جزئياً مسبقاً لمدة حوالي 8 دقائق مع مراعاة الطهي من الداخل جيداً مع الكرملة الذهبية فقط من الخارج، وعند إخراجها يتم تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان", "ثم يتم وضع الهاني ماسترد زجزاج أولاً ثم وضع البطاطس في منتصف الطبق ثم وضع التشكن فرايد أعلاه ووضع نقط سويت شيلي على حرف الفرايد تشكن ثم البرميجان والبريتزل المجروش"]}, {"name_en": "Bang Bang Shrimps", "name_ar": "بانج بانج شريمبس", "ingredients": [["6 قطع", "جم", "جمبري بريدنج sub"], ["10", "جم", "جبنة برميزان"], ["80", "جم", "صوص بانج بانج sub"], ["5", "جم", "سبايسي سبرنكل sub"], ["1", "جم", "ملح"], ["6 قطع", "جم", "بطاطس 15*15"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم طهي الجمبري ديب فراينج على درجة حرارة 180 لمدة حوالي 4 دقائق أو حتى الحصول على اللون الذهبي المكرمل مع مراعاة الطهي كاملاً من الداخل", "يتم عمل ديب فراينج للبطاطس المطهية جزئياً مسبقاً لمدة حوالي 8 دقائق مع مراعاة الطهي من الداخل جيداً مع الكرملة الذهبية فقط من الخارج، وعند إخراجها تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان", "ثم يتم وضع زجزاج البانج بانج ثم وضع البطاطس في منتصف الطبق ثم وضع الجمبري فرايد أعلاه والبارميزان المبشور مع عمل البرزنتيشن"]}], "Burger": [{"name_en": "THE Burger", "name_ar": "ذا برجر", "ingredients": [["1", "لقمة", "عيش برجر"], ["20", "جرام", "بصل كرمليز sup"], ["40", "جرام", "صوص برجر sup"], ["1", "جرام", "ملح"], ["200", "جرام", "لحم برجر sup"], ["20", "جرام", "ذبدة"], ["2", "سليز", "شيدر سليز"], ["مقسوم نصفين", "بورشن", "بطاطس 1980"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية اللحم على الجريل", "يتم عمل توست لعيش البرجر بوضع الذبدة", "يتم وضع صوص البرجر على جانبي اللقمة", "قبل اكتمال التسوية نضع 2 سلايز جبنة أمريكان", "نضع البصل الكرملايزد فوق الجبنة مع مراعاة أن يكون دافئ", "يتم وضع البطاطس (يتم تقطيع كل قطعة بطاطس إلى نصفين)"]}, {"name_en": "Smash Truffle Burger", "name_ar": "سماش ترافل برجر", "ingredients": [["1", "لقمة", "عيش برجر"], ["4", "جرام", "ملح"], ["40", "جرام", "صوص مايو ترافل sub"], ["4", "جرام", "فلفل"], ["2*80", "جرام", "برجر سماش"], ["200", "جم", "فرنش فرايز"], ["2", "سليز", "شيدر مدخن"], ["20", "جرام", "ذبدة"], ["30", "جرام", "صوص مشروم برجر sup"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية اللحم على الجريل", "يتم عمل توست لعيش البرجر بوضع الذبدة", "يتم وضع صوص المايو ترافل على جانبي اللقمة", "بعد اكتمال التسوية نضع سلايز جبنة مدخنة على كل قطعة سماش", "نضع صوص المشروم فوق البرجر", "ملحوظة: البرجر من اختيار الجست سنجل أو دوبل - في السنجل نضع قطعة واحدة من البرجر السماش فقط"]}, {"name_en": "Smash Classic Burger", "name_ar": "سماش كلاسيك برجر", "ingredients": [["1", "لقمة", "عيش برجر"], ["20", "جرام", "بصل أبيض سلايز"], ["40", "جرام", "صوص برجر sup"], ["20", "جرام", "خيار مخلل سلايز SUB"], ["2*80", "جرام", "برجر سماش"], ["20", "جرام", "طماطم سلايز فريش"], ["2", "سليز", "شيدر أمريكان"], ["1", "جرام", "ملح"], ["20", "جرام", "خس باتافيا"], ["20", "جرام", "ذبدة"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية اللحم على الجريل", "يتم عمل توست لعيش البرجر بوضع الذبدة", "يتم وضع صوص البرجر على جانبي اللقمة", "قبل اكتمال التسوية نضع 2 سلايز جبنة أمريكان", "نضع البصل الكرملايزد فوق الجبنة مع مراعاة أن يكون دافئ", "ملحوظة: البرجر من اختيار الجست سنجل أو دابل - في السنجل نضع قطعة واحدة من البرجر السماش فقط"]}], "French Toast": [{"name_en": "Mix Berry", "name_ar": "ميكس بيري", "ingredients": [["2", "لقمة", "عيش توست sub (مجهز)"], ["30", "جرام", "ميكس بيري صوص sub"], ["70", "جرام", "باستري كريم sub"], ["10", "جرام", "سكر بودر"], ["100", "جرام", "اباراي sub"], ["20", "جرام", "هني درسينج باستري sub"]], "steps": ["يتم تنظيف حواف قالب التوست من جميع الاتجاهات كما موضح بالصورة", "يتم تقطيع القالب إلى 8 قطع بالتساوي حتى يصبح 11 سم طول * 4 سم عرض", "يتم وضع عدد 2 قطعة من القالب في الاباراي لمدة دقيقة حتى يصبح هشاً", "يتم خروجه ووضعه في الهني درسينج", "يتم تصفيته ووضعه على الصاجة درجة حرارة 180", "يتم التسوية من جميع الاتجاهات مع مراعاة الكرملة الجيدة", "يتم فرد الكريمي تشيز مع صوص الميكس بيري في الطبق المتفق عليه كما موضح بالصور", "يتم وضع التوست بعد التسوية في الطبق ثم وضع السكرة البودرة أعلى ويقدم كما موضح بالصورة", "القالب بعد التنظيف والتقطيع (4 اوردر*2 لقمة)"]}, {"name_en": "Lotus", "name_ar": "لوتس", "ingredients": [["1/30", "جرام/ريمكال", "بسكوت لوتس (مجروش)"], ["2", "لقمة", "عيش توست sub (مجهز)"], ["10", "جرام", "شوكولت دارك (مبشور)"], ["70", "جرام", "صوص للوتس sub"], ["20", "جرام", "هني درسينج باستري sub"], ["100", "جرام", "اباراي sub"]], "steps": ["يتم تنظيف حواف قالب التوست من جميع الاتجاهات", "يتم تقطيع القالب إلى 8 قطع بالتساوي حتى يصبح 11 سم طول * 4 سم عرض", "يتم وضع عدد 2 قطعة من القالب في الاباراي لمدة دقيقة حتى يصبح هشاً", "يتم خروجه ووضعه في الهني درسينج ثم تصفيته ووضعه على الصاجة درجة حرارة 180", "يتم التسوية من جميع الاتجاهات مع مراعاة الكرملة الجيدة", "يتم وضع التوست بعد التسوية في منتصف الطبق ثم وضع صوص اللوتس عليه ثم وضع 1 ريمكال بسكوت مجروش أعلاه كما موضح بالصورة", "القالب بعد التنظيف والتقطيع (4 اوردر*2 لقمة)"]}], "Quesadilla": [{"name_en": "Chicken Avocado", "name_ar": "تشيكن أفوكادو", "ingredients": [["70", "جم", "جبنة شيدر مكس"], ["50", "جم", "ساور كريم"], ["150", "جم", "تشيكن مارينيتد sub"], ["2", "عدد", "خبز تورتيلا"], ["20", "جم", "بصل كرمالايزد sub"], ["50", "جم", "بيكو ديجالو sub"], ["20", "جم", "هالبينو مفروم"], ["50", "جم", "كورين خوديز sub"], ["50", "جم", "جواكامولي sub"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "توضع قطعة العيش التورتيلا في الطاسة على النار وتوضع الجبن الشيدر الأحمر ثم يتم وضع الفراخ والهالبينو المفروم والبصل الكرملايز ثم يتم وضع الجبنة الشيدر الأبيض ثم يتم وضع القطعة الثانية من العيش التورتيلا", "ثم يتم الطهي على درجة حرارة متوسطة لكرملة الأوردر جيداً ثم تقطع على 8 شرائح ويتم وضع الجواكامولي أعلاه", "يوضع الساور كريم وصوص البيكوديجالو والكورين خوديز جانباً على الطبق"]}, {"name_en": "Beef", "name_ar": "بيف", "ingredients": [["70", "جم", "جبنة شيدر مكس"], ["50", "جم", "ساور كريم"], ["120", "جم", "بيف راجو"], ["2", "عدد", "خبز تورتيلا"], ["20", "جم", "فاصوليا حمراء"], ["50", "جم", "بيكو ديجالو sub"], ["20", "جم", "هالبينو مفروم"], ["50", "جم", "كورين خوديز sub"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "توضع قطعة العيش التورتيلا في الطاسة على النار وتوضع الجبن الشيدر ثم يتم وضع البيف راجو والهالبينو المفروم والفاصوليا الحمراء ثم يتم وضع القطعة الثانية من العيش التورتيلا", "ثم يتم الطهي على درجة حرارة متوسطة لكرملة الأوردر جيداً ثم تقطع على 8 شرائح ويتم تقديمها في الطبق المتفق عليه", "يوضع الساور كريم وصوص البيكوديجالو والكورين خوديز جانباً على الطبق"]}, {"name_en": "Buffalo", "name_ar": "بافلو", "ingredients": [["70", "جم", "جبنة شيدر مكس"], ["40", "جم", "بافلو صوص"], ["150", "جم", "فراخ"], ["2", "عدد", "خبز تورتيلا"], ["40", "جم", "كارمالايزد أونيون"], ["60", "جم", "رانش"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم فرم الفراخ ثم وضعها مع صوص البافلو ثم يتم تجهيز لقمتي التورتيلا ووضع الجبن المكس والبصل الكرملايزد", "ثم وضع الفراخ الممزوجة بالبافلو ثم وضع اللقمة الأخرى ثم يتم الطهي على درجة حرارة متوسطة لكرملة الأوردر جيداً", "ثم تقطع على 8 شرائح وتقدم مع ريمكان رانش صوص وزجزاج رانش كما بالصورة"]}], "Granola": [{"name_en": "Yogurt Granola Platter", "name_ar": "طبق يوغرت جرانولا", "ingredients": [["270", "جرام", "زبادي يوناني"], ["70", "جرام", "رمان"], ["30", "جرام", "عسل أبيض"], ["50", "جرام", "فراولة"], ["2.5", "جرام", "فانيليا extract"], ["50", "جرام", "بلوبيري صوص (مصفى)"], ["100", "جرام", "برتقال"], ["70", "جرام", "زبادي فروزن sub"], ["100", "جرام", "موز"], ["50", "جرام", "جرانولا"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم وضع الزبادي في منتصف طبق التقديم ثم يضاف عليه العسل الأبيض والفانيليا ويقلب جيداً ثم يتم توزيعه في قاع الطبق من الحواف بشكل متناثر", "يتم وضع الفاكهة على حافة الزبادي من المنتصف كل نوع أمام الآخر بشكل منثق", "يتم وضع الزبادي الفروزن في منتصف الطبق ثم تضاف الجرانولا بشكل دائري حول الزبادي الفروزن", "يتم وضع البلوبيري صوص جارنش أعلى الطبق بشكل انحرافي كما موضح بالصورة ويقدم", "ملحوظة: الفاكهة المتاحة في الأوردر يتم تغييرها مع المتاح في الأسواق (Seasonal)"]}, {"name_en": "Yogurt Granola Can", "name_ar": "يوغرت جرانولا كان", "ingredients": [["120", "جرام", "زبادي يوناني"], ["25", "جرام", "رمان"], ["20", "جرام", "عسل أبيض"], ["40", "جرام", "فراولة"], ["1.5", "جرام", "فانيليا extract"], ["70", "جرام", "بلوبيري صوص (مصفى)"], ["50", "جرام", "برتقال"], ["25", "جرام", "زبادي فروزن sub"], ["50", "جرام", "موز"], ["25", "جرام", "جرانولا"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم عمل جارنش بصوص البلوبيري في الكان بشكل عشوائي", "يتم وضع الزبادي في إناء ثم يضاف عليه العسل الأبيض والفانيليا", "يتم تقطيع الفاكهة (كيوبس) ثم تضاف إلى الزبادي وتقلب برفق حتى تتجانس", "توضع في الكاب المخصص لها ثم يتم وضع الجرانولا من الأعلى وتقدم كما موضح بالصورة", "ملحوظة: الفاكهة المتاحة في الأوردر يتم تغييرها مع المتاح في الأسواق (Seasonal)"]}], "Main Dishes": [{"name_en": "Chicken Lemon Herb", "name_ar": "تشيكن ليمون هيرب", "ingredients": [["240", "جرام", "صدور فراخ مارينيتد sub"], ["100", "جرام", "لبن كامل الدسم"], ["20", "جرام", "بصل مفروم"], ["10", "جرام", "عصير ليمون"], ["10", "جرام", "ثوم مفروم"], ["1", "عدد", "ودج ليمون"], ["30", "جرام", "مستردة حب"], ["2", "عدد", "سايد"], ["10", "جرام", "مستردة ديجون"], ["150", "جرام", "كريمة لباني"], ["20", "جرام", "زيت ذرة"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية صدور الفراخ بان سيرد", "يتم وضع زيت الذرة في الطاسة وتسوية البصل ثم الثوم بعد اتمام عملية الطهي يتم وضع الكريمة مع اللبن", "يتم وضع المستردة حب والديجون وتقلب جيداً حتى تصبح الصوص جاهزة ثم توضع التوابل", "عندما يكون جاهز يتم وضع صدور الفراخ المطهية حتى انتهاء عملية", "يقدم مع السايد المطلوب في الطبق المتفق عليه كما موضح بالصورة ويجرنش بودج الليمون"]}, {"name_en": "Mary May Chicken", "name_ar": "ماري ماي تشيكن", "ingredients": [["240", "جرام", "صدور مارينيتد"], ["2", "جرام", "ملح"], ["30", "جرام", "صن دراي توميتو"], ["2", "جرام", "فلفل"], ["150", "جرام", "كريمة"], ["1/4", "مكعب", "مرقة دجاج"], ["100", "جرام", "لبن"], ["20", "جرام", "زيت ذرة"], ["30", "جرام", "بصل مفروم"], ["5", "جرام", "زيت ريحان"], ["50", "جرام", "مشروم فريش سلايز"], ["2", "عدد", "سايد"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية الصدور بان سيرد", "في طاسة يتم وضع الزيت والبصل وعمل سوتينج ثم المشروم والصن دراي توميتو", "يتم وضع زيت الذرة في الطاسة وتسوية البصل بعد اتمام عملية الطهي يتم وضع الكريمة مع اللبن", "يتم وضع المستردة حب والديجون وتقلب جيداً حتى تصبح الصوص جاهزة ثم توضع التوابل", "عندما يكون جاهز يتم وضع صدور الفراخ المطهية حتى انتهاء عملية", "يقدم مع السايد المطلوب في الطبق المتفق عليه كما موضح بالصورة ويجرنش بودج الليمون"]}, {"name_en": "Beef Stroganoff", "name_ar": "بيف ستروجانوف", "ingredients": [["150", "جرام", "كريمة طهي"], ["50", "جرام", "مشروم فريش (اسليز)"], ["100", "جرام", "لبن كامل الدسم"], ["30", "جرام", "ساوركريم"], ["1", "جرام", "ملح"], ["10", "عدد", "مستردة ديجون"], ["2", "جرام", "فلفل أسود"], ["2", "جم", "بقدونس مفروم"], ["1/4", "مكعب", "مرقة دجاج"], ["30", "جرام", "ذبدة"], ["180", "جرام", "بيف فيليه شرائح"], ["15", "جرام", "ورشيستر"], ["20", "جرام", "بصل أبيض مفروم"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية بورشن اللحم أولاً في طاسة على نار عالية لعمل كارمليزيشن", "يتم عمل سوتينج للمشروم والبصل مع اللحم حتى اكتمال عملية التسوية بدون تلوين البصل ثم وضع الورشيستر", "يتم وضع الكريمة واللبن مع الساوركريم والمستردة الديجون في الطاسة على النار حتى يصبح جاهزاً", "يتم وضع التوابل وعندما يكون جاهز يقدم كما موضح", "يتم تجهيز الماش بوتيتو ووضعه في الطبق كما موضح في الصورة", "يتم عمل برزنتيشن بالبقدونس المفروم كما موضح"]}, {"name_en": "BFFE Medallions", "name_ar": "بيف ميداليون", "ingredients": [["3", "pic", "بيف ميداليون"], ["20", "جرام", "فرشة خضار جريلد"], ["200", "gr", "ماش بوتيتو"], ["1", "B", "خضار بيبي جريلد"], ["60", "جرام", "صوص مشروم\\بيبير"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم عمل مارينيه للحمة زيت زيتون وملح وفلفل أسود", "يتم تسوية اللحمة على الشاركول جريل على الجانبين للوصول للتسوية المطلوبة (ميديم ويل أو ويل دن)", "بعد التسوية يتم وضع اللحمة على طبق لعمل ريست لمدة دقيقة", "الخضار الجريلد (3 جزر بيبي، 2 كوسة بيبي أنصاف، 2 باذنجان عروس أنصاف، 3 فاصوليا، 2 اسبراجوس)، يتم سلق جميع الخضار الجريلد ماعدا الباذنجان ثم تكويتها على الشاركول وتتبيلها بالفرشة", "يتم تسخين الماش والخضار الجريلد ووضعهم على الطبق كما هو موضح بالصورة", "يقدم مع الطبق صوص المشروم أو البيبر في ريمكان خارجي"]}, {"name_en": "Tuscan Shrimp", "name_ar": "توسكان شريمب", "ingredients": [["10", "قطعة", "جمبري"], ["150", "جرام", "كريمة لباني"], ["10", "جرام", "ثوم"], ["100", "جرام", "لبن كامل الدسم"], ["20", "جرام", "بصل"], ["5", "جرام", "ملح"], ["20", "جرام", "سبانخ فريش"], ["3", "جرام", "فلفل"], ["30", "جرام", "طماطم شيري"], ["10", "جرام", "عصير ليمون"], ["20", "جرام", "طماطم مجففة"], ["2", "عدد", "سايد"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية الجمبري مع مراعاة عدم عمل (Full cooking)", "يتم وضع الطماطم المجففة مع الطماطم الشيري", "يوضع الكريمة مع اللبن في الطاسة", "يوضع التوابل مع عصير الليمون ثم السبانخ", "عندما يكون جاهز يقدم في الطبق المتفق عليه مع 2 سايد كما موضح بالصورة"]}, {"name_en": "Schnitzel", "name_ar": "شنيتزل", "ingredients": [["1", "اوردر", "تشكن تشنتزل sub"], ["200", "جرام", "بطاطس بوم فريت"], ["15", "جرام", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "يتم تسوية قطعة الشنيتزل في الفراير على درجة حرارة 160 لمدة 4 دقائق", "بعد اتمام التسوية يتم فتح الأوردر من المنتصف للتأكد من التسوية", "يتم تسوية البوم فريت في الفراير", "في الطبق المتفق عليه يتم وضع أوردر التشنتزل في نصف الطبق ويوضع عليه البوم فريت في النصف الثاني وعلى التشنيزل", "يتم بشر البارميزان أعلى البوم فريت والتشنتزل كجارنيش ويقدم كما موضح"]}], "Sourdough Bread": [{"name_en": "Mushroom Mole", "name_ar": "ساوردو مشروم مول", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["100", "جم", "جواكامولي SUB"], ["5", "جم", "سبايسي سبرنكل"], ["70", "جم", "مشروم مارينيتد اسلايز SUB"], ["6 قطع", "جم", "بطاطس 15*15"], ["20", "جم", "كيوليه فلفل أحمر SUB"], ["1", "جم", "ملح"], ["1", "جم", "سمسم أبيض"], ["5", "جم", "زيت ترافيل"], ["5", "جم", "زيت زيتون"], ["1", "ريمكال", "زيتون مرينيتد sub"], ["5", "جم", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الجواكامولي على شريحة الساور دو وفردها جيداً", "ثم يتم وضع المشروم الشرائح بعد تسخينه جيداً ثم وضع كيوليه الفلفل الأحمر على هيئة نقاط أعلى المشروم ثم وضع السمسم الأبيض", "يتم عمل ديب فراينج للبطاطس المطهية جزئياً مسبقاً لمدة حوالي 8 دقائق مع مراعاة الطهي من الداخل جيداً مع الكرملة الذهبية فقط من الخارج", "عند إخراجها يتم تقليبها بالملح ثم مع الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت ترافيل"]}, {"name_en": "Mascarpone Olives / Oliveto Cheese", "name_ar": "ماسكاربوني زيتون", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["70", "جم", "جبنة كريمي تشيز"], ["5", "جم", "سبايسي سبرنكل"], ["100", "جم", "زيتون مارينيتد SUB"], ["6 قطع", "جم", "بطاطس 15*15"], ["20", "جم", "صن دراي توماتو"], ["1", "جم", "ملح"], ["3", "جم", "انفيوز بازل أويل SUB"], ["5", "جم", "زيت ترافيل"], ["20", "جم", "بصل كرملايزد SUB"], ["5", "جم", "جبنة برميزان"], ["1", "جم", "زعتر فريش"], ["5", "جم", "زيت زيتون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الجبنة الكريمي تشيز ثم صن دراي توماتو ثم الزيتون وأخيراً بصل الكرملايز والأوريجانو", "يتم عمل ديب فراينج للبطاطس كما سبق (8 دقائق)", "عند إخراجها يتم تقليبها بالملح ثم مع الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت ترافيل"]}, {"name_en": "Salmon Vlax", "name_ar": "ساوردو سالمون فلاكس", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["70", "جم", "جبنة كريمي تشيز"], ["5", "جم", "سبايسي سبرنكل"], ["70", "جم", "سموكد سالمون SUB"], ["6 قطع", "جم", "بطاطس 15*15"], ["20", "جم", "جرجير إيطالي"], ["1", "جم", "ملح"], ["20", "جم", "خيار تشيفد SUB"], ["5", "جم", "زيت ترافيل"], ["10", "جم", "بصل مارينيتد SUB"], ["5", "جم", "جبنة برميزان"], ["5", "جم", "كابري"], ["1", "عدد", "شبت أوراق"], ["1", "ريمكال", "زيتون مرينيتد sub"], ["5", "جم", "زيت زيتون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الكريمي تشيز ثم الجرجير مع الخيار المارينيتد أعلى الجرجير", "يتم وضع السالمون بشكل احترافي ثم وضع الكابري وأوراق الشبت بشكل منسق", "يتم عمل ديب فراينج للبطاطس كما سبق (8 دقائق)", "عند إخراجها يتم تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت ترافيل"]}, {"name_en": "Truffle Burrata", "name_ar": "ساوردو ترافل بوراتا", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["1", "قطعة", "جبنة بوراتا"], ["5", "جم", "سبايسي سبرنكل"], ["30", "جم", "خس باتافيا مفروم"], ["6 قطع", "جم", "بطاطس 15*15"], ["70", "جم", "بيف بيكون قطع مطهي"], ["1", "جم", "ملح"], ["30", "جم", "بندق روستد مجروش"], ["10", "جم", "زيت ترافيل"], ["5", "جم", "زيت زيتون"], ["1", "ريمكال", "زيتون مرينيتد sub"], ["10", "جم", "جبنة برميزان"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الجبن البوراتا ثم فتحها وفردها بشكل جزئي على شريحة الخبز ثم وضع الخس ثم البيكون المطهي بعد تقطيعه كيوبس ثم البندق المحمص المجروش وأخيراً البرميزان وزيت الترافيل", "يتم عمل ديب فراينج للبطاطس كما سبق (8 دقائق)", "عند إخراجها يتم تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت الترافيل"]}, {"name_en": "Chicken Herb", "name_ar": "ساوردو تشيكن هيرب", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["120", "جم", "جريلد تشيكن SUB"], ["5", "جم", "سبايسي سبرنكل"], ["70", "جم", "طحيني مايو SUB"], ["6 قطع", "جم", "بطاطس 15*15"], ["20", "جم", "جرجير إيطالي"], ["1", "جم", "ملح"], ["30", "جم", "طماطم سلو روستد"], ["5", "جم", "زيت ترافيل"], ["15", "جم", "زيت ريحان SUB"], ["10", "جم", "جبنة برميزان"], ["1", "ريمكال", "زيتون مرينيتد sub"], ["5", "جم", "زيت زيتون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة عدم الكرملة", "يتم وضع الطحيني مايو أولاً ثم الجرجير مع طماطم السلو روستد", "يتم تقطيع التشيكن جريلد قطع مكعبات ثم توزيعها بشكل منظم ثم وضع جبنة البرميزان أعلى التشيكن", "يتم عمل ديب فراينج للبطاطس كما سبق (8 دقائق)", "عند إخراجها يتم تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت الترافيل"]}, {"name_en": "Italian Tomato", "name_ar": "ساوردو طماطم إيطالي", "ingredients": [["1", "شريحة", "شريحة ساور دو سماكة 1.5 سم"], ["100", "جم", "جواكامولي sub"], ["5", "جم", "سبايسي سبرنكل"], ["4/100", "جم/عدد", "شرائح طماطم"], ["6 قطع", "جم", "بطاطس 15*15"], ["4/120", "جم/عدد", "شرائح جبنة بوفولا"], ["1", "جم", "ملح"], ["5", "جم", "أوراق ريحان"], ["5", "جم", "زيت ترافيل"], ["5", "جم", "جبنة برميزان"], ["1", "ريمكال", "زيتون مرينيتد sub"], ["5", "جم", "زيت زيتون"]], "steps": ["التأكد من سلامة المنتج ونظافة مكان العمل", "أولاً يتم تسخين شريحة ساور دو مع زيت الزيتون في فرن الكونفيكشن على درجة حرارة 200 لمدة دقيقة واحدة ومراعاة الكرملة", "يتم وضع الجواكامولي ثم شرائح الطماطم والجبنة البوفولا شريحة بعد شريحة ثم يوضع بينهما أوراق الريحان ثم أخيراً البلسمك ريدكشن", "يتم عمل ديب فراينج للبطاطس كما سبق (8 دقائق)", "عند إخراجها يتم تقليبها بالملح ثم الأسبايسي سبرنكل ثم رصها وبشر برميزان أعلاها ثم وضع 5 مل زيت الترافيل"]}], "Sub Recipes": [{"name_en": "Pancake Dough", "name_ar": "عجين بان كيك", "ingredients": [["1", "لتر", "لبن رايب"], ["240", "جم", "بيض كامل"], ["150", "جم", "سكر أبيض"], ["150", "جم", "سكر بني"], ["5", "باكت", "فانيليا"], ["75", "جم", "زيت ذرة"], ["30", "جم", "بيكنج بودر"], ["850", "جم", "دقيق"]], "steps": ["يجب أن تكون الأيدي ومنطقة العمل والأدوات نظيفة ومطهرة ويجب ارتداء الجوانتي البلاستيك بعد غسل اليدين جيداً", "يتم خلط اللبن مع البيض جيداً ثم إضافة السكر الأبيض والسكر البني والتقليب جيداً", "يتم نخل الدقيق والبيكنج بودر لتخلخل الهواء به", "ثم يتم إضافة الدقيق تدريجياً إلى خليط اللبن مع التقليب المستمر", "أخيراً يتم إضافة الزيت إلى الخليط والخلط جيداً", "YIELD: 2.250 كجم — صلاحية المنتج يوم واحد في التبريد بشرط أن يكون بالشكل المطلوب التشغيل به، غير مسموح بالفريزر"]}, {"name_en": "Marinated Onions", "name_ar": "بصل مرينيتد", "ingredients": [["200", "جم", "بصل أحمر"], ["5", "جم", "زيست ليمون"], ["20", "جم", "عصير ليمون"], ["5", "جم", "شبت مفروم"], ["10", "جم", "زيت زيتون"]], "steps": ["يتم تقطيع البصل بعد التنظيف فاين جوليان ويوضع في وعاء الخليط", "ثم يتم إضافة جميع المكونات ويقلب جيداً", "YIELD: 200 جم — صلاحية المنتج شيفت واحد في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Marinated Cucumber", "name_ar": "خيار مرينيتد", "ingredients": [["200", "جم", "خيار"], ["30", "جم", "زيست ليمون"], ["20", "جم", "عصير ليمون"], ["10", "جم", "شبت مفروم"], ["10", "جم", "زيت زيتون"], ["3", "جم", "ملح"], ["2", "جم", "فلفل أسود ناعم"]], "steps": ["يتم تقشير الخيار وعمل شيفد له بالمقشرة", "يتم بشر الليمون بالزيستر وعصر باقي الليمون", "يتم فرم الشبت", "يتم وضع المكونات كلها في وعاء ووضع الفلفل والملح وتقليبها جيداً", "YIELD: 200 جم — صلاحية المنتج شيفت واحد في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Guacamole Spread", "name_ar": "جواكامولي سبريد", "ingredients": [["800", "جم", "أفوكادو مهروس"], ["TT", "TT", "عصير ليمون"], ["20", "جم", "كزبرة خضراء"], ["10", "جم", "فلفل أحمر حار"], ["170", "جم", "زبادي يوناني"], ["60", "جم", "زيت زيتون"], ["TT", "TT", "ملح"], ["TT", "TT", "فلفل أسود ناعم"]], "steps": ["يتم تقشير الأفوكادو بالملعقة ثم هرسه جيداً ويوضع في وعاء الخليط", "يتم فرم الفلفل جيداً بالسكينة والكزبرة ويضاف إلى الوعاء", "يتم إضافة جميع المكونات إلى الوعاء ويقلب جيداً", "يتم عمل تست كالمعتاد للتوابل والليمون", "YIELD: 1.200 كجم — صلاحية المنتج يوم واحد في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Croutons", "name_ar": "كروتون", "ingredients": [["1/2", "قالب", "عيش توست"], ["TT", "TT", "ملح"], ["TT", "TT", "فلفل أسود"], ["5", "جم", "زعتر فريش"], ["10", "جم", "زيت زيتون"]], "steps": ["يتم إزالة الحواف أولاً ثم تقطيع التوست إلى مكعبات 1.5*1.5", "ثانياً يتم فرم الزعتر (الزهر فقط)", "ثالثاً يتم وضع زيت الزيتون على الكروتون ثم وضع التوابل والزعتر المفروم", "رابعاً يتم تقليب الكروتون جيداً ووضعه في وعاء الخبز في الفرن حرارة 180 حتى الحصول على اللون الذهبي", "صلاحية المنتج 3 أيام بشرط أن يكون بالشكل المطلوب التشغيل به، غير مسموح بالفريزر أو الثلاجة"]}, {"name_en": "Pizza Dough N.Y", "name_ar": "عجينة بيتزا نيويورك", "ingredients": [["1", "كيلو", "دقيق"], ["1", "جم", "خميرة"], ["25", "جم", "ملح"], ["550", "جم", "مياه"], ["10", "جم", "زيت زيتون"]], "steps": ["يتم إضافة المياه في العجان والخميرة ثم إضافة الدقيق", "يتم تشغيل العجان على البطيء لمدة 10 دقائق", "ثم يتم إضافة الملح مع زيادة السرعة لمدة 3 دقائق ثم إضافة الزيت لمدة دقيقتين أخرى", "يتم تريح العجين لمدة ربع ساعة ثم تقسيط العجين ثم يوضع في الثلاجة", "YIELD: 1.5 كجم — صلاحية المنتج يومان في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Pizza Dough Napoli", "name_ar": "عجينة بيتزا نابولي", "ingredients": [["1", "كيلو", "دقيق 00"], ["1.5", "جم", "خميرة"], ["30", "جم", "ملح"], ["650", "جم", "مياه"], ["30", "جم", "زيت زيتون"]], "steps": ["يتم إضافة المياه في العجان والخميرة ثم إضافة الدقيق", "يتم تشغيل العجان على البطيء لمدة 10 دقائق", "ثم يتم إضافة الملح مع زيادة السرعة لمدة 3 دقائق ثم إضافة الزيت لمدة دقيقتين أخرى", "يتم تريح العجين لمدة ربع ساعة ثم تقسيط العجين ثم يوضع في الثلاجة", "YIELD: 1.650 كجم — صلاحية المنتج يومان في التبريد، غير مسموح بالفريزر"]}, {"name_en": "NY Pizza Sauce", "name_ar": "صوص بيتزا نيويورك", "ingredients": [["2.5", "كيلو", "طماطم بيلد"], ["50", "جم", "أوريجانو"], ["40", "جم", "ملح"], ["50", "جم", "زيت زيتون"]], "steps": ["يتم إضافة الطماطم في الخلاط وتضرب جيداً", "يتم إضافة الطماطم في وعاء ووضع باقي المكونات وخلطها جيداً", "YIELD: 2.500 جم — صلاحية المنتج 3 أيام في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Napoli Pizza Sauce (Basil)", "name_ar": "صوص بيتزا نابولي (ريحان)", "ingredients": [["2.5", "كيلو", "طماطم بيلد"], ["5", "جم", "ريحان فريش"], ["30", "جم", "ملح"], ["50", "جم", "زيت زيتون"]], "steps": ["يتم إضافة الطماطم في الخلاط وتضرب جيداً", "يتم إضافة الطماطم في وعاء ووضع باقي المكونات وخلطها جيداً", "YIELD: 2.500 جم — صلاحية المنتج 3 أيام في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Napoli Pizza Sauce (Chunky)", "name_ar": "صوص بيتزا نابولي (شنكس)", "ingredients": [["2.5", "كيلو", "طماطم بيلد"], ["50", "جم", "ريحان فريش"], ["35", "جم", "ملح"], ["60", "جم", "زيت زيتون"]], "steps": ["يتم ضرب الطماطم نصف ضربة chunks", "يتم إضافة الطماطم في وعاء ووضع باقي المكونات وخلطها جيداً", "YIELD: 2.500 جم — صلاحية المنتج 3 أيام في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Chicken Popps Breading", "name_ar": "بريدنج تشكن بوبس", "ingredients": [["375", "جم", "دقيق"], ["125", "جم", "نشا"], ["TT", "TT", "ملح"], ["TT", "TT", "فلفل أسود ناعم"]], "steps": ["بعد وزن المنتجات يتم وضعها في وعاء وخلطها جيداً", "YIELD: 500 جم — صلاحية المنتج 3 أيام في التبريد، غير مسموح بالفريزر"]}, {"name_en": "Blueberry Yogurt", "name_ar": "زبادي بلوبيري", "ingredients": [["200", "GR", "زبادي يوناني"], ["100", "GR", "بلوبيري صوص"]], "steps": ["بعد وزن الزبادي والبلوبيري يتم مزجهم جيداً", "YIELD: 300 جم / 4 كوب — صلاحية 7 أيام"]}, {"name_en": "Scallopini Sauce", "name_ar": "صوص سكالوبيني", "ingredients": [["150", "GR", "جبنة مدخنة"], ["1", "PIC", "مرقة دجاج"], ["5", "GM", "ملح"], ["3", "GM", "فلفل أسود"], ["20", "GM", "زبدة"], ["150", "GR", "فلفل ألوان"], ["40", "GR", "بصل أبيض مفروم"], ["100", "GR", "تركي"], ["100", "GR", "بيف بيكون"], ["500", "ML", "كريمة"], ["600", "ML", "لبن"]], "steps": ["يتم تسوية التركي والبيكون جيداً في طاسة بها زبدة", "عند إتمام عملية الطهي يتم إضافة البصل ثم الفلفل الألوان", "يتم إضافة الكريمة واللبن بعد إتمام تسوية الفلفل ثم إضافة الجبنة", "قبل الغليان يتم إضافة التوابل", "YIELD: 1400 جم — صلاحية يومان"]}, {"name_en": "Salmon Lemon Butter", "name_ar": "سالمون ليمون بتر", "ingredients": [["20", "جرام", "زبدة"], ["10", "جرام", "ثوم"], ["50", "جرام", "كابري"], ["500", "جرام", "كريمة"], ["TT", "TT", "فلفل أسود"], ["1/2", "PIC", "مرقة دجاج"], ["50", "جرام", "عصير ليمون"]], "steps": ["يتم وضع الكابري المفروم في طاسة على النار بها زبدة", "يتم وضع الثوم بعد إتمام عملية طهي الكابري وعند إتمام التسوية", "يتم وضع الكريمة والتوابل", "عندما يكون جاهز يتم إضافة الليمون ثم يرفع من النار مباشرة", "YIELD: 500 جم — صلاحية يوم واحد"]}, {"name_en": "Pesto Hollandaise", "name_ar": "بستو هولانديز", "ingredients": [["100", "GR", "هولانديز Sub"], ["30", "GR", "صوص بستو Sub"]], "steps": ["بعد وزن المنتجات يتم مزجهم جيداً", "YIELD: 125 جم — صلاحية ساعتين في درجة حرارة الغرفة"]}, {"name_en": "Pimiento Hollandaise", "name_ar": "بيمينتو هولانديز", "ingredients": [["100", "GR", "هولانديز Sub"], ["3", "GR", "بابريكا مدخنة Sub"]], "steps": ["بعد وزن المنتجات يتم مزجهم جيداً", "YIELD: 100 جم — صلاحية ساعتين في درجة حرارة الغرفة"]}, {"name_en": "Herbs Hollandaise", "name_ar": "هيربز هولانديز", "ingredients": [["100", "GR", "هولانديز Sub"], ["3", "GR", "زعتر ورزماري مفروم"]], "steps": ["بعد وزن المنتجات يتم مزجهم جيداً", "YIELD: 100 جم — صلاحية ساعتين في درجة حرارة الغرفة"]}, {"name_en": "Cheese with Tomatoes", "name_ar": "جبنة بالطماطم", "ingredients": [["400", "Gm", "جبنة بارميلي"], ["300", "GR", "طماطم برنواز"], ["60", "GR", "زيت زيتون"]], "steps": ["يتم تحضير المنتجات ثم وضعها في وعاء", "تقلب جيداً ثم يتم حفظها", "YIELD: 700 جم — صلاحية 3 أيام في درجة حرارة الغرفة"]}, {"name_en": "Lotus Sauce", "name_ar": "صوص لوتس", "ingredients": [["400", "Gm", "زبدة لوتس"], ["80", "GR", "زيت ذرة"]], "steps": ["يتم تحضير المنتجات ثم وضعها في وعاء وتقلب جيداً ثم تحفظ", "YIELD: 460 جم — صلاحية 3 أيام في درجة حرارة الغرفة"]}, {"name_en": "Abray", "name_ar": "أبراي", "ingredients": [["200", "gm", "لبن كامل الدسم"], ["2", "Gm", "بيض كامل"], ["3", "Gm", "فانيليا كوكس"], ["3", "Gm", "قرفة بودر"], ["50", "gm", "سكر خشن"]], "steps": ["يتم تحضير المنتجات ثم وضعها في وعاء وتقلب جيداً ثم تحفظ", "YIELD: 300 جم — صلاحية يومان في درجة حرارة الغرفة"]}, {"name_en": "Pastry Cream", "name_ar": "كريمة باستري", "ingredients": [["125", "gm", "كيري بلوك"], ["125", "Gm", "كيري سبريد"], ["25", "Gm", "لبن جوز هند"], ["50", "Gm", "سكر بودر"], ["2", "gm", "فانيليا كوكس"]], "steps": ["يتم تحضير المنتجات ثم وضعها في وعاء وتقلب جيداً ثم تحفظ", "YIELD: 300 جم — صلاحية يومان في درجة حرارة الغرفة"]}, {"name_en": "Honey Dressing", "name_ar": "هني دريسنج", "ingredients": [["240", "gm", "عسل أبيض"], ["400", "Gm", "زبدة"]], "steps": ["يتم تحضير المنتجات ثم وضعها في وعاء وتقلب جيداً ثم تحفظ", "YIELD: 600 جم — صلاحية يومان في درجة حرارة الغرفة"]}, {"name_en": "Blueberry Sauce", "name_ar": "بلوبيري صوص", "ingredients": [["500", "gm", "ميكس بيري فروزن"], ["150", "Gm", "سكر خشن"], ["50", "gm", "مياه"]], "steps": ["يتم تحضير المنتجات ووضعها في وعاء على النار هادئة", "تقلب جيداً حتى الغليان ثم يتم رفعها وتركها لتبرد", "YIELD: 450 جم — صلاحية 3 أيام في درجة حرارة الغرفة"]}]};
+
+const DEFAULT_CAT_ICONS = {
+  "Salad":"🥗","Bagels":"🥯","Breakfast":"🍳","Pizza":"🍕","Pancakes":"🥞",
+  "Pasta":"🍝","Soup":"🍲","Appetizers":"🍤","Burger":"🍔","French Toast":"🍞",
+  "Quesadilla":"🌮","Granola":"🥣","Main Dishes":"🍽️","Sourdough Bread":"🥖",
+  "Sub Recipes":"🧪"
+};
+const DEFAULT_CAT_NAMES_AR = {
+  "Salad":"السلطات","Bagels":"البيجل","Breakfast":"الإفطار","Pizza":"البيتزا",
+  "Pancakes":"البان كيك","Pasta":"الباستا","Soup":"الشوربة","Appetizers":"المقبلات",
+  "Burger":"البرجر","French Toast":"الفرنش توست","Quesadilla":"الكيسادية",
+  "Granola":"الجرانولا","Main Dishes":"الأطباق الرئيسية","Sourdough Bread":"الساوردو",
+  "Sub Recipes":"وصفات فرعية (Sub)"
+};
+const DEFAULT_EMPLOYEES = [{"code": "175", "name": "محمود صبحي عزيز متولي", "branch": "السنتر"}, {"code": "536", "name": "محمود إبراهيم محمود إبراهيم الشيمي", "branch": "السنتر"}, {"code": "548", "name": "عبدالرحمن أحمد العدوي نعيم بدوي", "branch": "السنتر"}, {"code": "576", "name": "رامي حمري انجلو كالو", "branch": "السنتر"}, {"code": "593", "name": "أحمد حسن محمد علي صائم", "branch": "السنتر"}, {"code": "650", "name": "ساميه عبدالفتاح فوزي محمد عبدالفتاح", "branch": "السنتر"}, {"code": "708", "name": "علي محمود علي أحمد", "branch": "السنتر"}, {"code": "745", "name": "محمد جادالله إبراهيم إمام", "branch": "السنتر"}, {"code": "816", "name": "بدر حسين حسن محمود أحمد", "branch": "السنتر"}, {"code": "859", "name": "محمد يسري صابر أبو ضيف", "branch": "السنتر"}, {"code": "870", "name": "أحمد مختار محارب عبدالمرضي", "branch": "السنتر"}, {"code": "929", "name": "بلال مهاب عبدالرحيم محمود محمد", "branch": "السنتر"}, {"code": "931", "name": "عصام إبراهيم عرفات إبراهيم محمد", "branch": "السنتر"}, {"code": "940", "name": "جرجس ميلاد شحاته حنا  شحاته", "branch": "السنتر"}, {"code": "941", "name": "عمرو سعيد محمد صاوي بدر", "branch": "السنتر"}, {"code": "945", "name": "عمرو أسامة طه عبده محمد", "branch": "السنتر"}, {"code": "967", "name": "هشام إبراهيم عبدالقادر عامر", "branch": "السنتر"}, {"code": "993", "name": "حسن محمد أبو اليزيد علي البلتاجي", "branch": "السنتر"}, {"code": "1032", "name": "عبدالمنجي طنطاوي عبدالمنجي طنطاوي", "branch": "السنتر"}, {"code": "1159", "name": "يوسف أحمد أنور محمد عبدالقادر", "branch": "السنتر"}, {"code": "1239", "name": "أحمد محمد عربي أحمد", "branch": "السنتر"}, {"code": "1260", "name": "كريم رمضان صلاح أحمد", "branch": "السنتر"}, {"code": "1261", "name": "محمد حسين محمد محمود", "branch": "السنتر"}, {"code": "1318", "name": "محمود سمير محمد طنطاوي النطاط", "branch": "السنتر"}, {"code": "1339", "name": "أحمد تامر عادل محمد أبوزيد", "branch": "السنتر"}, {"code": "1388", "name": "عبدالله يوسف سيد عبدالمنعم", "branch": "السنتر"}, {"code": "1398", "name": "محمد صابر صوفي قطب", "branch": "السنتر"}, {"code": "1400", "name": "فارس عيد علي رجب إسماعيل عريان", "branch": "السنتر"}, {"code": "1458", "name": "أحمد رضا السيد محمدي السيد", "branch": "السنتر"}, {"code": "1467", "name": "يوسف سيد إسماعيل أحمد العسيلي", "branch": "السنتر"}, {"code": "1468", "name": "إسلام عطيه علي مزيد", "branch": "السنتر"}, {"code": "1491", "name": "محمد أحمد سعد عبدالفتاح", "branch": "السنتر"}, {"code": "1504", "name": "محمد عزت ناصر عبدالرازق محمد زيدان", "branch": "السنتر"}, {"code": "1505", "name": "إسلام سعيد حنفي حسن", "branch": "السنتر"}, {"code": "1506", "name": "حسام شوقي أحمد عبدالناصر", "branch": "السنتر"}, {"code": "1513", "name": "ضاحي عبدالله عبدالمالك عمران", "branch": "السنتر"}, {"code": "1540", "name": "محمود جمال السيد فرحات أبو صالح", "branch": "السنتر"}, {"code": "1548", "name": "أحمد يوسف عبدالعزيز يوسف", "branch": "السنتر"}, {"code": "1621", "name": "محمود حمدي عزت محمد بدوي", "branch": "السنتر"}, {"code": "1625", "name": "محمد أحمد عبدالمنعم عبدربه خلاف", "branch": "السنتر"}, {"code": "1629", "name": "حسام عبدالله عنتر عبدالرازق أحمد", "branch": "السنتر"}, {"code": "1648", "name": "مالك أحمد محمود أحمد علي", "branch": "السنتر"}, {"code": "1658", "name": "عبدالله سلامة إبراهيم سيد أحمد", "branch": "السنتر"}, {"code": "1659", "name": "أدم سمير أبو سريع أدم علي", "branch": "السنتر"}, {"code": "1661", "name": "عبدالرحمن أحمد فتحي مجاهد محمد", "branch": "السنتر"}, {"code": "1670", "name": "إسلام محمد محسن عزوز خليل", "branch": "السنتر"}, {"code": "1671", "name": "مناوئل اندروس كودي كوكو", "branch": "السنتر"}, {"code": "1691", "name": "أدهم مصطفي فوزي فرج عبدالمجيد", "branch": "السنتر"}, {"code": "1695", "name": "أحمد سمير محمد عبد الغني", "branch": "السنتر"}, {"code": "1699", "name": "محمد أحمد هلال محمد", "branch": "السنتر"}, {"code": "1700", "name": "مصطفي شوقي أحمد عبد الناصر", "branch": "السنتر"}, {"code": "1736", "name": "إسلام محمد عبدالعزيز عبدالقادر", "branch": "السنتر"}, {"code": "1891", "name": "محمد خالد عبده عبدالعال", "branch": "السنتر"}, {"code": "1894", "name": "علي سيد البدوي سيد علي", "branch": "السنتر"}, {"code": "1903", "name": "عبدالرحمن سليمان أحمد محمد سليمان", "branch": "السنتر"}, {"code": "1941", "name": "مروان إبراهيم محمد محمود جودة", "branch": "السنتر"}, {"code": "1942", "name": "محمود نصر محمد عكاشة السيسي", "branch": "السنتر"}, {"code": "1951", "name": "عدلي عبدالرحمن كوكومان كوكو", "branch": "السنتر"}, {"code": "178", "name": "محمود علاء الدين محمود أبو العلا", "branch": "المعادي"}, {"code": "240", "name": "أنور هشام أنور إبراهيم", "branch": "المعادي"}, {"code": "527", "name": "محمد سامي محمد الأمين إمام عبدالرازق", "branch": "المعادي"}, {"code": "634", "name": "سيد خالد سيد سلطان", "branch": "المعادي"}, {"code": "635", "name": "أحمد محمد عبدالعزيز محمد شاهين", "branch": "المعادي"}, {"code": "642", "name": "اكيتش اجوير دينج اجوير", "branch": "المعادي"}, {"code": "645", "name": "كوتش اكيتش ابييم", "branch": "المعادي"}, {"code": "767", "name": "لوال دنج مو دنج", "branch": "المعادي"}, {"code": "887", "name": "عبدالله خالد عبداللطيف محمد عبداللطيف", "branch": "المعادي"}, {"code": "969", "name": "عطيه محمد حسن منوفي", "branch": "المعادي"}, {"code": "1021", "name": "ديفيد سوبيك ويليم جورج", "branch": "المعادي"}, {"code": "1112", "name": "عبدالرحمن أسامة بنداري الشوربجي", "branch": "المعادي"}, {"code": "1282", "name": "محمد عبدالقوي محمد عبدالقوي", "branch": "المعادي"}, {"code": "1589", "name": "يوسف نور البدري السيد", "branch": "المعادي"}, {"code": "1617", "name": "محمود محمد محمود السنوسي", "branch": "المعادي"}, {"code": "1747", "name": "عبدالحميد أحمد فتحي عبدالحميد", "branch": "المعادي"}, {"code": "1757", "name": "نادر إبراهيم محمود المنسي", "branch": "المعادي"}, {"code": "88", "name": "محمود سمير عبدالفتاح محمد", "branch": "إيفوري"}, {"code": "177", "name": "مروان عماد مناع حسن عبدالمحسن", "branch": "إيفوري"}, {"code": "379", "name": "محمد يسري حسين عرابي", "branch": "إيفوري"}, {"code": "549", "name": "مينا عادل فارس غيط", "branch": "إيفوري"}, {"code": "1079", "name": "محمد البيومي عوض مخلوف", "branch": "إيفوري"}, {"code": "1639", "name": "صلاح الدين رفعت إبراهيم بيومي", "branch": "إيفوري"}, {"code": "1688", "name": "كريم أيمن حسين حسن", "branch": "إيفوري"}, {"code": "1694", "name": "فايز صالح عبدالله أدم", "branch": "إيفوري"}, {"code": "1735", "name": "طارق سمير عثمان خفاجة عامر", "branch": "إيفوري"}, {"code": "1792", "name": "يوسف السيد أحمد عبد السلام إبراهيم", "branch": "إيفوري"}, {"code": "1834", "name": "أحمد محمد أحمد صلاح عبدالحميد محمد", "branch": "إيفوري"}, {"code": "1862", "name": "عبدالرحمن عاطف محمد أحمد يوسف", "branch": "إيفوري"}, {"code": "1888", "name": "عمرو محمد نجيب حسين أحمد", "branch": "إيفوري"}, {"code": "1889", "name": "أشرف سعد مصطفي جبر", "branch": "إيفوري"}, {"code": "1902", "name": "محمد صلاح محمد عبدالحميد", "branch": "إيفوري"}, {"code": "1913", "name": "رامي عماد سعيد أبو بكر عبدالمولي", "branch": "إيفوري"}, {"code": "1943", "name": "محمود أسامة عبدالحليم عبدالصمد", "branch": "إيفوري"}, {"code": "1946", "name": "يوسف سعيد إبراهيم", "branch": "إيفوري"}, {"code": "1949", "name": "أحمد محمد علي عيسي", "branch": "إيفوري"}, {"code": "689", "name": "عاطف محمد عبدالعدل محمد", "branch": "بارك إستريت"}, {"code": "962", "name": "محمد عيد محمد السيد", "branch": "بارك إستريت"}, {"code": "1145", "name": "أحمد أمين فؤاد أمين هلال", "branch": "بارك إستريت"}, {"code": "1701", "name": "يوسف منصور يوسف سطوحي", "branch": "بارك إستريت"}, {"code": "1728", "name": "مروان محمد راضي عبدالعليم", "branch": "بارك إستريت"}, {"code": "1729", "name": "أحمد ماهر محمد محمد", "branch": "بارك إستريت"}, {"code": "1730", "name": "أحمد فاوي فؤاد أحمد", "branch": "بارك إستريت"}, {"code": "1776", "name": "أحمد إبراهيم محمود الغرب", "branch": "بارك إستريت"}, {"code": "1789", "name": "خالد إبراهيم خليل محمد", "branch": "بارك إستريت"}, {"code": "1790", "name": "أحمد محمد مسعد منطاوي", "branch": "بارك إستريت"}, {"code": "1791", "name": "أحمد محمد رزق أبو زيد", "branch": "بارك إستريت"}, {"code": "1803", "name": "أحمد عبدالرحيم ثابت محمد", "branch": "بارك إستريت"}, {"code": "1816", "name": "فهد محمود عثمان", "branch": "بارك إستريت"}, {"code": "1826", "name": "محمد نصر إدريس فضل", "branch": "بارك إستريت"}, {"code": "1887", "name": "سيد عبدالرازق سيد حسن", "branch": "بارك إستريت"}, {"code": "1892", "name": "إسماعيل علي إسماعيل أحمد", "branch": "بارك إستريت"}, {"code": "1906", "name": "أحمد نصر إدريس فضل", "branch": "بارك إستريت"}, {"code": "1917", "name": "يوسف هيثم محمد مرسي", "branch": "بارك إستريت"}, {"code": "1919", "name": "سلامه حسن سلامه حسن عبدالجواد", "branch": "بارك إستريت"}, {"code": "1953", "name": "احمد حسن احمد حسن", "branch": "بارك إستريت"}, {"code": "1958", "name": "سيف سيد درويش سيد ابراهيم", "branch": "بارك إستريت"}, {"code": "86", "name": "محمود عبدالعال عبدالسلام أبو خالد", "branch": "جاليريا"}, {"code": "167", "name": "أحمد رضا أحمد حسين", "branch": "جاليريا"}, {"code": "169", "name": "عبدالله محمد إبراهيم عبدالجليل", "branch": "جاليريا"}, {"code": "575", "name": "باسم حمدي محمد السيد عبده", "branch": "جاليريا"}, {"code": "731", "name": "أدهم أنور أحمد عتريس", "branch": "جاليريا"}, {"code": "809", "name": "مصطفي رأفت أحمد عبدالقادر", "branch": "جاليريا"}, {"code": "938", "name": "علي محمد أحمد محمد إمام", "branch": "جاليريا"}, {"code": "1073", "name": "عبدالرحمن عبدالرحيم سليم عبدالمنعم", "branch": "جاليريا"}, {"code": "1169", "name": "زياد صابر عبدالمنعم أبو طالب", "branch": "جاليريا"}, {"code": "1223", "name": "شادي محمد السيد محمد سلام", "branch": "جاليريا"}, {"code": "1224", "name": "أحمد محمد فتح الله قطب الزيدي", "branch": "جاليريا"}, {"code": "1243", "name": "إسلام حسن عبدالحميد حسين", "branch": "جاليريا"}, {"code": "1348", "name": "أحمد سيد رسلان محمد حمزة", "branch": "جاليريا"}, {"code": "1480", "name": "رضا عماد صلاح علي", "branch": "جاليريا"}, {"code": "1495", "name": "أحمد سيد دسوقي عطية", "branch": "جاليريا"}, {"code": "1573", "name": "بابكر عماد بابكر عبدالمجيد", "branch": "جاليريا"}, {"code": "1644", "name": "يوسف عبدالنبي بدر إبراهيم", "branch": "جاليريا"}, {"code": "1666", "name": "محمد حافظ فيصل حافظ", "branch": "جاليريا"}, {"code": "1932", "name": "سعيد إبراهيم عباس عبدالراضي", "branch": "جاليريا"}, {"code": "101", "name": "خالد أشرف زكي أبو النجا", "branch": "ليك تاون"}, {"code": "619", "name": "محمد طه سعد خليل إسماعيل", "branch": "ليك تاون"}, {"code": "667", "name": "حسام عزت أحمد سيد أبو عقده", "branch": "ليك تاون"}, {"code": "729", "name": "محمد سعيد حسن أبو بكر", "branch": "ليك تاون"}, {"code": "733", "name": "نور الدين مجدي كمال عبدالوهاب", "branch": "ليك تاون"}, {"code": "935", "name": "عبدالوهاب محمد كمال عبدالوهاب محمد", "branch": "ليك تاون"}, {"code": "957", "name": "إبراهيم عنتر سيد أحمد شعراوي", "branch": "ليك تاون"}, {"code": "1325", "name": "محمد أشرف محمد حامد", "branch": "ليك تاون"}, {"code": "1436", "name": "أحمد إبراهيم حسيني عبد المجيد", "branch": "ليك تاون"}, {"code": "1445", "name": "رأفت حسن محمد حسن حامد", "branch": "ليك تاون"}, {"code": "1464", "name": "حسن محمد رحمه الله محمد", "branch": "ليك تاون"}, {"code": "1502", "name": "محمد أنور رمضان رمضان", "branch": "ليك تاون"}, {"code": "1533", "name": "أحمد محمد محمد خميس", "branch": "ليك تاون"}, {"code": "1543", "name": "كريم عيد السيد المنسي البدوي", "branch": "ليك تاون"}, {"code": "1584", "name": "مصطفي محمد منازع محمد", "branch": "ليك تاون"}, {"code": "1585", "name": "أحمد سيد حسن سليم", "branch": "ليك تاون"}, {"code": "1618", "name": "عمار أحمد محمد عز العرب سيد", "branch": "ليك تاون"}, {"code": "1777", "name": "محمد خالد سيد عبدالرحمن", "branch": "ليك تاون"}, {"code": "1796", "name": "حسين جمال حسين إبراهيم", "branch": "ليك تاون"}, {"code": "1828", "name": "هشام عبدالباسط محمد رفاعي", "branch": "ليك تاون"}, {"code": "1868", "name": "عمرو علاء محمد السيد شحاته", "branch": "ليك تاون"}, {"code": "1872", "name": "عبدالله سيد جمعه السيد عبدربه", "branch": "ليك تاون"}, {"code": "1880", "name": "طارق سعد صديق علي يونس", "branch": "ليك تاون"}, {"code": "1886", "name": "أدهم محمد سيد محمد سعد", "branch": "ليك تاون"}, {"code": "1890", "name": "عمرو صياد شاهين علي", "branch": "ليك تاون"}, {"code": "1929", "name": "محمد عبدالعزيز امين عباس", "branch": "ليك تاون"}, {"code": "1939", "name": "طاهر أبوزيد عبدالرحيم حسن", "branch": "ليك تاون"}, {"code": "1955", "name": "إبراهيم محمد إبراهيم عبدالتواب", "branch": "ليك تاون"}, {"code": "38", "name": "محمد هلال خلف حسن", "branch": "مدينتي"}, {"code": "100", "name": "محمود محمد قاسم عبدالعال", "branch": "مدينتي"}, {"code": "102", "name": "محمود ناجح عبدالنظير محمد", "branch": "مدينتي"}, {"code": "105", "name": "أحمد علي أحمد أبو سريع", "branch": "مدينتي"}, {"code": "172", "name": "فوزي مجدي هلال باهي", "branch": "مدينتي"}, {"code": "337", "name": "عمرو بدر عبدالسلام طه بدر", "branch": "مدينتي"}, {"code": "444", "name": "محمد طارق محمد علي", "branch": "مدينتي"}, {"code": "965", "name": "إسلام عبدالحليم محمود فرج شاهين", "branch": "مدينتي"}, {"code": "973", "name": "أشرف عادل إسماعيل السباعي", "branch": "مدينتي"}, {"code": "1044", "name": "يس محمد محمود إبراهيم", "branch": "مدينتي"}, {"code": "1138", "name": "محمد الحسن الفضل محمد الحسن الريح", "branch": "مدينتي"}, {"code": "1148", "name": "عثمان محمد عثمان عبدالهادي", "branch": "مدينتي"}, {"code": "1168", "name": "سيف رشدي اباظة عزت أحمد", "branch": "مدينتي"}, {"code": "1321", "name": "محمد عبدالحليم محمود فرج علي", "branch": "مدينتي"}, {"code": "1349", "name": "عبدالله أحمد عبدالستار عبدالغفار", "branch": "مدينتي"}, {"code": "1412", "name": "محمد صلاح الدين عبدالله محمد", "branch": "مدينتي"}, {"code": "1470", "name": "عمرو أيمن أحمد سيد خليفة", "branch": "مدينتي"}, {"code": "1563", "name": "عبدالرازق ربيع حسين رشدي", "branch": "مدينتي"}, {"code": "1640", "name": "عبدالرحمن حمزة عبدالنبي حمزة سيد", "branch": "مدينتي"}, {"code": "1746", "name": "محمد مصطفي محمد يونس حزين", "branch": "مدينتي"}, {"code": "1840", "name": "أدهم محمود زكريا إبراهيم عبدالهادي", "branch": "مدينتي"}, {"code": "1948", "name": "إسلام محمود محمد محمود سعد", "branch": "مدينتي"}, {"code": "1952", "name": "حسام سعد السيد محمد عبدالرحيم", "branch": "مدينتي"}, {"code": "92", "name": "يوسف مصطفي محمد بيومي", "branch": "مفيدا"}, {"code": "110", "name": "محمد شعبان يوسف شلبي", "branch": "مفيدا"}, {"code": "118", "name": "محمد حمدي محمد سيد الشربي", "branch": "مفيدا"}, {"code": "421", "name": "عبدالرحمن محسن عبدالعاطي عبدالجواد", "branch": "مفيدا"}, {"code": "502", "name": "خالد حسن مرعي السيد الدجوي", "branch": "مفيدا"}, {"code": "734", "name": "محمد نبيل لطفي عبدالمقصود محمد", "branch": "مفيدا"}, {"code": "798", "name": "محمود صابر صابر السيد", "branch": "مفيدا"}, {"code": "805", "name": "محمد أكرم محمد زكي عبدالحكيم عبدالغفار", "branch": "مفيدا"}, {"code": "839", "name": "عبدالرحمن أحمد حسني حسين", "branch": "مفيدا"}, {"code": "984", "name": "محمود ممدوح محروس إسماعيل", "branch": "مفيدا"}, {"code": "1015", "name": "عبدالرحمن عماد الدين حسني سويلم", "branch": "مفيدا"}, {"code": "1094", "name": "محمد خلف درويش حسن", "branch": "مفيدا"}, {"code": "1117", "name": "أحمد محمد فتحي محمد", "branch": "مفيدا"}, {"code": "1147", "name": "محمد صابر سالم محمد", "branch": "مفيدا"}, {"code": "1245", "name": "محمد عماد مناع حسن عبدالمحسن", "branch": "مفيدا"}, {"code": "1286", "name": "أحمد نبيل رمضان السيد", "branch": "مفيدا"}, {"code": "1425", "name": "أحمد رمضان طه السيد خضر", "branch": "مفيدا"}, {"code": "1446", "name": "سيف محمد علي محمد همام", "branch": "مفيدا"}, {"code": "1583", "name": "أحمد بكر عبدالواحد بكر", "branch": "مفيدا"}, {"code": "1604", "name": "النعيم الخير يونس سعد", "branch": "مفيدا"}, {"code": "1619", "name": "كريم بيومي أحمد محمد حسين", "branch": "مفيدا"}, {"code": "1626", "name": "يوسف بدران عبدالفتاح عبدالفتاح", "branch": "مفيدا"}, {"code": "1632", "name": "متوكل عبدالقادر محمد أحمد", "branch": "مفيدا"}, {"code": "1662", "name": "كريم محمود سعيد محمود غريب", "branch": "مفيدا"}, {"code": "1703", "name": "درويش خلف درويش حسن", "branch": "مفيدا"}, {"code": "1793", "name": "محمد عصام محمود محمد إبراهيم", "branch": "مفيدا"}, {"code": "1812", "name": "مروان بلال عبدالعاطي محمد دسوقي", "branch": "مفيدا"}, {"code": "1878", "name": "يوحنا فايز إدوارد حبيب سعيد", "branch": "مفيدا"}, {"code": "1879", "name": "سيد محمد فتحي محمد محمود", "branch": "مفيدا"}, {"code": "1896", "name": "يوسف صلاح الدين جمال توفيق جاب الله", "branch": "مفيدا"}, {"code": "1927", "name": "صابر ايمن صابر الزفيتي", "branch": "مفيدا"}, {"code": "1928", "name": "محمد ضياء الدين جابر محمد", "branch": "مفيدا"}, {"code": "1930", "name": "احمد ياسر مصطفي شحاته", "branch": "مفيدا"}, {"code": "1931", "name": "احمد محمد عبدالسلام محمد إبراهيم", "branch": "مفيدا"}, {"code": "1934", "name": "محمود حسين محمد محمد", "branch": "مفيدا"}, {"code": "1935", "name": "محمد اشرف أبو العينين إبراهيم", "branch": "مفيدا"}, {"code": "1940", "name": "إيهاب عادل عبدالتواب محمد", "branch": "مفيدا"}, {"code": "1947", "name": "عبدالرحمن حمدي عبدالنبي عبدالعزيز", "branch": "مفيدا"}, {"code": "89", "name": "محمود عصام مرسي حسن الغنام", "branch": "نيو جيزة"}, {"code": "535", "name": "محمد أحمد العدوي نعيم بدري", "branch": "نيو جيزة"}, {"code": "636", "name": "كريم رضا أحمد حسين سليمان", "branch": "نيو جيزة"}, {"code": "643", "name": "فهد حازم سيد عبدالحميد محمد", "branch": "نيو جيزة"}, {"code": "673", "name": "محمد عبدالرحمن عيد أبو العلا", "branch": "نيو جيزة"}, {"code": "822", "name": "زياد ياسر إبراهيم عبدالعال", "branch": "نيو جيزة"}, {"code": "1042", "name": "طارق محمد عبدالعزيز عبدربه", "branch": "نيو جيزة"}, {"code": "1102", "name": "محمود محمد محمود عيسي القاضي", "branch": "نيو جيزة"}, {"code": "1510", "name": "عادل أحمد عبده سيد مرسي", "branch": "نيو جيزة"}, {"code": "1547", "name": "محسن طارق عبدالمحسن محمد عليوه", "branch": "نيو جيزة"}, {"code": "1555", "name": "زياد عادل إبراهيم رجب", "branch": "نيو جيزة"}, {"code": "1738", "name": "محمد سمير عبدالباسط عباس", "branch": "نيو جيزة"}, {"code": "1770", "name": "علي محمود محمد أحمد محمد", "branch": "نيو جيزة"}];
+
+
+/* ===================== ADMIN CONFIG ===================== */
+/* غيّر كلمة المرور دي لأي حاجة تانية تحبها */
+const ADMIN_PASSWORD = "171999";
+const STORAGE_KEY = "kitchen1980_appdata_v1";
+const EMP_KEY = "kitchen1980_employees_v1";
+const CERT_KEY = "kitchen1980_cert_settings_v1";
+
+const DEFAULT_CERT_CONFIG = {
+  titleEn: "HACCP & Hygiène",
+  titleAr: "سلامة الغذاء",
+  examName: "HACCP & Hygiène · Food Safety - سلامة الغذاء",
+  level: "المستوى الأول",
+  sig1En: "Chef Shraby",
+  sig1Ar: "شيف شرابي",
+  sig2En: "Chef Hassan Mohamed",
+  sig2Ar: "شيف حسن محمد"
+};
+let CERT_CONFIG = {};
+function loadCertConfig(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(CERT_KEY));
+    CERT_CONFIG = Object.assign({}, DEFAULT_CERT_CONFIG, saved||{});
+  }catch(e){ CERT_CONFIG = Object.assign({}, DEFAULT_CERT_CONFIG); }
+}
+function saveCertConfig(){
+  try{ localStorage.setItem(CERT_KEY, JSON.stringify(CERT_CONFIG)); }catch(e){}
+}
+function openCertSettings(){
+  document.getElementById('certTitleEn').value = CERT_CONFIG.titleEn;
+  document.getElementById('certTitleAr').value = CERT_CONFIG.titleAr;
+  document.getElementById('certExamName').value = CERT_CONFIG.examName;
+  document.getElementById('certLevel').value = CERT_CONFIG.level;
+  document.getElementById('sig1En').value = CERT_CONFIG.sig1En;
+  document.getElementById('sig1Ar').value = CERT_CONFIG.sig1Ar;
+  document.getElementById('sig2En').value = CERT_CONFIG.sig2En;
+  document.getElementById('sig2Ar').value = CERT_CONFIG.sig2Ar;
+  openModalEl('certSettingsModal');
+}
+function saveCertSettings(){
+  CERT_CONFIG = {
+    titleEn: document.getElementById('certTitleEn').value.trim() || DEFAULT_CERT_CONFIG.titleEn,
+    titleAr: document.getElementById('certTitleAr').value.trim() || DEFAULT_CERT_CONFIG.titleAr,
+    examName: document.getElementById('certExamName').value.trim() || DEFAULT_CERT_CONFIG.examName,
+    level: document.getElementById('certLevel').value.trim() || DEFAULT_CERT_CONFIG.level,
+    sig1En: document.getElementById('sig1En').value.trim() || DEFAULT_CERT_CONFIG.sig1En,
+    sig1Ar: document.getElementById('sig1Ar').value.trim() || DEFAULT_CERT_CONFIG.sig1Ar,
+    sig2En: document.getElementById('sig2En').value.trim() || DEFAULT_CERT_CONFIG.sig2En,
+    sig2Ar: document.getElementById('sig2Ar').value.trim() || DEFAULT_CERT_CONFIG.sig2Ar
+  };
+  saveCertConfig();
+  closeModal('certSettingsModal');
+  alert('تم حفظ إعدادات الشهادة');
+}
+function genCertNumber(){
+  const n = Math.floor(100000 + Math.random()*900000);
+  return `FS-L1-${n}`;
+}
+
+let DATA = {}, CAT_ICONS = {}, CAT_NAMES_AR = {};
+let EMPLOYEES = []; // [{code,name,branch}]
+let isAdmin = false;
+let currentCat = null;
+let editContext = { cat:null, idx:-1 };
+
+/* ===================== PERSISTENCE ===================== */
+function loadState(){
+  let saved = null;
+  try{ saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); }catch(e){ saved = null; }
+  if(saved && saved.data){
+    DATA = saved.data;
+    CAT_ICONS = Object.assign({}, DEFAULT_CAT_ICONS, saved.catIcons||{});
+    CAT_NAMES_AR = Object.assign({}, DEFAULT_CAT_NAMES_AR, saved.catNamesAr||{});
+  } else {
+    DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+    CAT_ICONS = Object.assign({}, DEFAULT_CAT_ICONS);
+    CAT_NAMES_AR = Object.assign({}, DEFAULT_CAT_NAMES_AR);
+  }
+}
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({data:DATA, catIcons:CAT_ICONS, catNamesAr:CAT_NAMES_AR}));
+  }catch(e){ console.warn('تعذر الحفظ في localStorage', e); }
+}
+function loadEmployees(){
+  let saved = [];
+  try{ saved = JSON.parse(localStorage.getItem(EMP_KEY)) || []; }catch(e){ saved = []; }
+  // ابدأ بالمحفوظ (لو موجود) وادمج معاه أي كود افتراضي ناقص، عشان الأكواد الافتراضية تفضل شغالة دايماً
+  const byCode = {};
+  saved.forEach(e=> byCode[e.code] = e);
+  DEFAULT_EMPLOYEES.forEach(e=>{ if(!byCode[e.code]) byCode[e.code] = e; });
+  EMPLOYEES = Object.values(byCode);
+  saveEmployees();
+}
+function saveEmployees(){
+  try{ localStorage.setItem(EMP_KEY, JSON.stringify(EMPLOYEES)); }catch(e){}
+}
+
+/* ===================== EMPLOYEES ADMIN ===================== */
+let editingEmployeeCode = null;
+function openEmployeesModal(){
+  resetEmployeeForm();
+  const searchBox = document.getElementById('empSearchBox');
+  if(searchBox) searchBox.value = '';
+  renderEmployeesList();
+  openModalEl('employeesModal');
+}
+function resetEmployeeForm(){
+  editingEmployeeCode = null;
+  document.getElementById('empCode').value = '';
+  document.getElementById('empName').value = '';
+  document.getElementById('empBranch').value = '';
+  document.getElementById('empFormTitle').textContent = 'إضافة موظف جديد';
+  document.getElementById('empSaveBtn').textContent = 'إضافة موظف';
+  document.getElementById('empCancelBtn').classList.add('hidden');
+}
+function renderEmployeesList(){
+  const wrap = document.getElementById('employeesList');
+  document.getElementById('empCountLabel').textContent = EMPLOYEES.length;
+  const q = (document.getElementById('empSearchBox')?.value || '').trim().toLowerCase();
+  let list = EMPLOYEES;
+  if(q){ list = EMPLOYEES.filter(e => e.name.toLowerCase().includes(q) || e.code.includes(q)); }
+  if(!list.length){ wrap.innerHTML = '<div class="sub">لا يوجد نتائج</div>'; return; }
+  wrap.innerHTML = list.map(e=>`
+    <div class="cd itemrow">
+      <div>
+        <div class="itemname">${e.name} <span style="color:#888;font-weight:400;font-size:11px">(كود ${e.code})</span></div>
+        <div class="itemname_ar">${e.branch}</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="iconbtn" onclick="editEmployee('${e.code}')">✎</button>
+        <button class="iconbtn" onclick="deleteEmployee('${e.code}')">🗑</button>
+      </div>
+    </div>`).join('');
+}
+function editEmployee(code){
+  const emp = EMPLOYEES.find(e=>e.code===code);
+  if(!emp) return;
+  editingEmployeeCode = code;
+  document.getElementById('empCode').value = emp.code;
+  document.getElementById('empName').value = emp.name;
+  document.getElementById('empBranch').value = emp.branch;
+  document.getElementById('empFormTitle').textContent = `تعديل بيانات: ${emp.name}`;
+  document.getElementById('empSaveBtn').textContent = 'حفظ التعديل';
+  document.getElementById('empCancelBtn').classList.remove('hidden');
+  document.getElementById('empCode').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function cancelEditEmployee(){
+  resetEmployeeForm();
+}
+function addEmployee(){
+  const code = document.getElementById('empCode').value.trim();
+  const name = document.getElementById('empName').value.trim();
+  const branch = document.getElementById('empBranch').value.trim();
+  if(!code || !name || !branch){ alert('اكتب الكود والاسم والفرع كلهم'); return; }
+
+  if(editingEmployeeCode){
+    // تعديل موظف موجود (ممكن يغيّر الكود نفسه كمان)
+    if(code !== editingEmployeeCode && EMPLOYEES.some(e=>e.code===code)){
+      alert('الكود الجديد ده مستخدم بالفعل مع موظف تاني'); return;
+    }
+    const idx = EMPLOYEES.findIndex(e=>e.code===editingEmployeeCode);
+    if(idx > -1) EMPLOYEES[idx] = {code, name, branch};
+  } else {
+    if(EMPLOYEES.some(e=>e.code===code)){ alert('الكود ده مستخدم بالفعل'); return; }
+    EMPLOYEES.push({code, name, branch});
+  }
+  saveEmployees();
+  resetEmployeeForm();
+  renderEmployeesList();
+}
+function deleteEmployee(code){
+  if(!confirm('حذف هذا الموظف؟')) return;
+  EMPLOYEES = EMPLOYEES.filter(e=>e.code!==code);
+  saveEmployees();
+  if(editingEmployeeCode === code) resetEmployeeForm();
+  renderEmployeesList();
+}
+function restoreDefaultEmployees(){
+  if(!confirm(`استعادة أي كود افتراضي ناقص من أصل ${DEFAULT_EMPLOYEES.length} كود؟ (لن يتم حذف أي تعديلات موجودة)`)) return;
+  const byCode = {};
+  EMPLOYEES.forEach(e=> byCode[e.code] = e);
+  let added = 0;
+  DEFAULT_EMPLOYEES.forEach(e=>{ if(!byCode[e.code]){ byCode[e.code]=e; added++; } });
+  EMPLOYEES = Object.values(byCode);
+  saveEmployees();
+  renderEmployeesList();
+  alert(`تمت إضافة ${added} كود كان ناقص`);
+}
+
+/* Bulk import employees from a CSV (كود,اسم,فرع per line) or JSON file [{code,name,branch}] */
+function importEmployeesFile(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const text = e.target.result;
+    let added = 0, skipped = 0;
+    try{
+      let rows = [];
+      if(file.name.toLowerCase().endsWith('.json')){
+        const parsed = JSON.parse(text);
+        rows = Array.isArray(parsed) ? parsed.map(r=>[r.code, r.name, r.branch]) : [];
+      } else {
+        rows = text.split(/\r?\n/).filter(l=>l.trim()).map(line=>{
+          return line.split(',').map(c=>c.trim().replace(/^"|"$/g,''));
+        });
+        // skip a header row if it looks like one
+        if(rows.length && /كود|code/i.test(rows[0][0]||'')) rows.shift();
+      }
+      rows.forEach(([code,name,branch])=>{
+        code=(code||'').toString().trim(); name=(name||'').toString().trim(); branch=(branch||'').toString().trim();
+        if(!code || !name || !branch){ skipped++; return; }
+        if(EMPLOYEES.some(e=>e.code===code)){ skipped++; return; }
+        EMPLOYEES.push({code,name,branch});
+        added++;
+      });
+      saveEmployees();
+      renderEmployeesList();
+      alert(`تم إضافة ${added} موظف${skipped? ' — وتم تجاهل '+skipped+' سطر ناقص/مكرر':''}`);
+    }catch(err){
+      alert('الملف غير صالح، تأكد من الصيغة (CSV أو JSON)');
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+  evt.target.value = '';
+}
+
+/* ===================== NAV ===================== */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function openModalEl(id){ document.getElementById(id).classList.add('open'); }
+
+/* ===================== ADMIN / PASSWORD GATE ===================== */
+let pwPurpose = 'admin'; // 'admin' | 'review'
+function onAdminToggle(){
+  if(isAdmin){ adminLogout(); return; }
+  pwPurpose = 'admin';
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').textContent = '';
+  openModalEl('pwModal');
+  setTimeout(()=>document.getElementById('pwInput').focus(),100);
+}
+function requestReviewUnlock(){
+  pwPurpose = 'review';
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').textContent = '';
+  openModalEl('pwModal');
+  setTimeout(()=>document.getElementById('pwInput').focus(),100);
+}
+function checkPassword(){
+  const val = document.getElementById('pwInput').value;
+  if(val === ADMIN_PASSWORD){
+    closeModal('pwModal');
+    if(pwPurpose === 'review'){
+      renderCertReview(examSession);
+    } else {
+      isAdmin = true;
+      applyAdminUI();
+    }
+  } else {
+    document.getElementById('pwError').textContent = 'كلمة المرور غلط، حاول تاني';
+  }
+}
+function adminLogout(){
+  isAdmin = false;
+  applyAdminUI();
+}
+function applyAdminUI(){
+  document.getElementById('adminToggleBtn').textContent = isAdmin ? '🔓 خروج التعديل' : '🔒 تعديل';
+  document.getElementById('adminStrip').classList.toggle('hidden', !isAdmin);
+  renderCatGrid();
+  if(currentCat) openCat(currentCat);
+}
+
+/* ===================== CATEGORY GRID ===================== */
+function renderCatGrid(){
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = '';
+  Object.keys(DATA).forEach(cat=>{
+    const div = document.createElement('div');
+    div.className='catcard';
+    div.onclick=()=>openCat(cat);
+    div.innerHTML = `
+      ${isAdmin? `<div class="badge"><button class="iconbtn" onclick="event.stopPropagation();deleteCategory('${cat}')">🗑</button></div>`:''}
+      <div style="font-size:26px">${CAT_ICONS[cat]||'🍴'}</div>
+      <div class="catname">${CAT_NAMES_AR[cat]||cat}</div>
+      <div class="catcount">${DATA[cat].length} صنف</div>`;
+    grid.appendChild(div);
+  });
+  if(isAdmin){
+    const add = document.createElement('div');
+    add.className='catcard addcard';
+    add.onclick=()=>{ document.getElementById('newCatKey').value=''; document.getElementById('newCatAr').value=''; document.getElementById('newCatIcon').value='🍴'; openModalEl('editCatModal'); };
+    add.innerHTML = `<div style="font-size:26px">➕</div><div class="catname">قسم جديد</div>`;
+    grid.appendChild(add);
+  }
+}
+
+function saveNewCategory(){
+  const key = document.getElementById('newCatKey').value.trim();
+  const ar = document.getElementById('newCatAr').value.trim();
+  const icon = document.getElementById('newCatIcon').value.trim() || '🍴';
+  if(!key){ alert('لازم تكتب اسم القسم بالإنجليزي'); return; }
+  if(DATA[key]){ alert('القسم ده موجود بالفعل'); return; }
+  DATA[key] = [];
+  CAT_ICONS[key] = icon;
+  CAT_NAMES_AR[key] = ar || key;
+  saveState();
+  closeModal('editCatModal');
+  renderCatGrid();
+}
+
+function deleteCategory(cat){
+  if(!confirm(`هل أنت متأكد من حذف قسم "${CAT_NAMES_AR[cat]||cat}" بكل أصنافه؟`)) return;
+  delete DATA[cat];
+  saveState();
+  renderCatGrid();
+}
+
+/* ===================== ITEMS LIST ===================== */
+function openCat(cat){
+  currentCat = cat;
+  document.getElementById('catTitle').textContent = (CAT_ICONS[cat]||'') + ' ' + (CAT_NAMES_AR[cat]||cat);
+  const wrap = document.getElementById('catItems');
+  wrap.innerHTML = '';
+  (DATA[cat]||[]).forEach((item, idx)=>{
+    const div = document.createElement('div');
+    div.className='card itemrow';
+    div.innerHTML = `<div style="flex:1;cursor:pointer" onclick="openItem('${cat}',${idx})">
+        <div class="itemname">${item.name_en}</div>
+        <div class="itemname_ar">${item.name_ar}</div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        ${isAdmin? `<button class="iconbtn" onclick="event.stopPropagation();openEditItem('${cat}',${idx})">✎</button>
+                    <button class="iconbtn" onclick="event.stopPropagation();quickDeleteItem('${cat}',${idx})">🗑</button>`:''}
+        <div style="color:#e94560;font-size:18px;cursor:pointer" onclick="openItem('${cat}',${idx})">‹</div>
+      </div>`;
+    wrap.appendChild(div);
+  });
+  document.getElementById('addItemBtn').classList.toggle('hidden', !isAdmin);
+  showScreen('screen-cat');
+}
+
+function quickDeleteItem(cat, idx){
+  if(!confirm('حذف هذا الصنف؟')) return;
+  DATA[cat].splice(idx,1);
+  saveState();
+  openCat(cat);
+}
+
+/* ===================== ITEM DETAIL MODAL ===================== */
+function ingredientsTable(item){
+  let rows = item.ingredients.map(([q,u,n])=>
+    `<tr><td>${q}</td><td>${u}</td><td>${n}</td></tr>`).join('');
+  return `<table><thead><tr><th>الكمية</th><th>الوحدة</th><th>المكون</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+function stepsList(item){
+  return item.steps.map((s,i)=>
+    `<div class="step"><span class="stepnum">${i+1}</span><span>${s}</span></div>`).join('');
+}
+function openItem(cat, idx){
+  const item = DATA[cat][idx];
+  const body = document.getElementById('itemModalBody');
+  body.innerHTML = `
+    <div style="font-weight:900;font-size:17px;color:#e94560">${item.name_en}</div>
+    <div style="font-size:13px;color:#aaa;margin-bottom:4px">${item.name_ar}</div>
+    <div class="sub" style="margin-bottom:12px">${CAT_NAMES_AR[cat]||cat}</div>
+    <div class="section-title">المكونات</div>
+    ${ingredientsTable(item)}
+    <div class="section-title">طريقة الإعداد</div>
+    ${stepsList(item)}
+    ${isAdmin? `<button class="btn r" style="width:100%;margin-top:16px" onclick="closeModal('itemModal');openEditItem('${cat}',${idx})">✎ تعديل الصنف</button>`:''}
+  `;
+  openModalEl('itemModal');
+}
+
+/* ===================== EDIT ITEM (ADMIN) ===================== */
+function openEditItem(cat, idx){
+  if(!isAdmin){ alert('لازم تدخل وضع التعديل الأول'); return; }
+  editContext = { cat, idx };
+  const isNew = idx === -1;
+  document.getElementById('editItemTitle').textContent = isNew ? 'إضافة صنف جديد' : 'تعديل صنف';
+  document.getElementById('deleteItemBtn').classList.toggle('hidden', isNew);
+
+  const item = isNew ? {name_en:'', name_ar:'', ingredients:[['','','']], steps:['']} : DATA[cat][idx];
+  document.getElementById('editNameEn').value = item.name_en;
+  document.getElementById('editNameAr').value = item.name_ar;
+
+  const ingWrap = document.getElementById('ingRows');
+  ingWrap.innerHTML = '';
+  item.ingredients.forEach(row=> ingWrap.appendChild(makeIngRow(row)));
+
+  const stepWrap = document.getElementById('stepRows');
+  stepWrap.innerHTML = '';
+  item.steps.forEach(s=> stepWrap.appendChild(makeStepRow(s)));
+
+  openModalEl('editItemModal');
+}
+function makeIngRow(row){
+  const [q,u,n] = row;
+  const div = document.createElement('div');
+  div.className='ing-row';
+  div.innerHTML = `<input class="inp" placeholder="الكمية" value="${q||''}">
+    <input class="inp" placeholder="الوحدة" value="${u||''}">
+    <input class="inp" placeholder="اسم المكون" value="${n||''}">
+    <button class="iconbtn" onclick="this.parentElement.remove()">✕</button>`;
+  return div;
+}
+function makeStepRow(s){
+  const div = document.createElement('div');
+  div.className='step-row';
+  div.innerHTML = `<textarea class="inp">${s||''}</textarea>
+    <button class="iconbtn" onclick="this.parentElement.remove()">✕</button>`;
+  return div;
+}
+function addIngRow(){ document.getElementById('ingRows').appendChild(makeIngRow(['','',''])); }
+function addStepRow(){ document.getElementById('stepRows').appendChild(makeStepRow('')); }
+
+function saveEditItem(){
+  const name_en = document.getElementById('editNameEn').value.trim();
+  const name_ar = document.getElementById('editNameAr').value.trim();
+  if(!name_en){ alert('لازم اسم الصنف بالإنجليزي'); return; }
+
+  const ingredients = [...document.getElementById('ingRows').children].map(row=>{
+    const inputs = row.querySelectorAll('input');
+    return [inputs[0].value.trim(), inputs[1].value.trim(), inputs[2].value.trim()];
+  }).filter(r=> r[0]||r[1]||r[2]);
+
+  const steps = [...document.getElementById('stepRows').children].map(row=>{
+    return row.querySelector('textarea').value.trim();
+  }).filter(s=>s);
+
+  const newItem = { name_en, name_ar, ingredients, steps };
+  const { cat, idx } = editContext;
+
+  if(idx === -1){
+    DATA[cat].push(newItem);
+  } else {
+    DATA[cat][idx] = newItem;
+  }
+  saveState();
+  closeModal('editItemModal');
+  openCat(cat);
+}
+function deleteCurrentItem(){
+  const { cat, idx } = editContext;
+  if(idx === -1) return;
+  if(!confirm('حذف هذا الصنف نهائياً؟')) return;
+  DATA[cat].splice(idx,1);
+  saveState();
+  closeModal('editItemModal');
+  openCat(cat);
+}
+
+/* ===================== SEARCH ===================== */
+function renderSearch(){
+  const q = document.getElementById('searchBox').value.trim();
+  const box = document.getElementById('searchResults');
+  if(!q){ box.innerHTML=''; return; }
+  let results = [];
+  Object.keys(DATA).forEach(cat=>{
+    DATA[cat].forEach((item, idx)=>{
+      const hay = (item.name_en+' '+item.name_ar).toLowerCase();
+      if(hay.includes(q.toLowerCase())) results.push({cat, idx, item});
+    });
+  });
+  if(!results.length){ box.innerHTML = '<div class="sub">لا نتائج</div>'; return; }
+  box.innerHTML = results.slice(0,20).map(r=>
+    `<div class="card itemrow" onclick="openItem('${r.cat}',${r.idx})">
+      <div><div class="itemname">${r.item.name_en}</div><div class="itemname_ar">${r.item.name_ar} — ${CAT_NAMES_AR[r.cat]||r.cat}</div></div>
+      <div style="color:#e94560">‹</div>
+    </div>`).join('');
+}
+
+/* ===================== EXAM MODE (full system) ===================== */
+function allItemsFlat(catFilter){
+  let flat = [];
+  Object.keys(DATA).forEach(cat=>{
+    if(catFilter && cat!==catFilter) return;
+    (DATA[cat]||[]).forEach((item,idx)=> flat.push({cat, idx, item}));
+  });
+  return flat;
+}
+
+let examType = 'full';
+let resolvedEmployee = null; // {name, branch, code}
+
+function openExamSetup(){
+  const sel = document.getElementById('examCatSelect');
+  sel.innerHTML = Object.keys(DATA).map(cat=>
+    `<option value="${cat}">${CAT_NAMES_AR[cat]||cat} (${DATA[cat].length})</option>`).join('');
+  pickExamType('full');
+  document.getElementById('examCode').value = '';
+  document.getElementById('empInfoBox').innerHTML = '';
+  resolvedEmployee = null;
+  showScreen('screen-examsetup');
+}
+
+function onExamCodeInput(){
+  const code = document.getElementById('examCode').value.trim();
+  const infoBox = document.getElementById('empInfoBox');
+  resolvedEmployee = null;
+  if(!code){ infoBox.innerHTML=''; return; }
+
+  const emp = EMPLOYEES.find(e=>e.code===code);
+  if(emp){
+    infoBox.innerHTML = `<div class="cd ok">مرحباً <b>${emp.name}</b> — فرع ${emp.branch} ✅</div>`;
+    resolvedEmployee = {code, name:emp.name, branch:emp.branch};
+  } else {
+    infoBox.innerHTML = `<div class="cd wx">الكود غير مسجل. تواصل مع المسؤول لإضافة كودك</div>`;
+  }
+}
+function pickExamType(type){
+  examType = type;
+  document.querySelectorAll('#examTypeRow .pill').forEach(p=>p.classList.toggle('active', p.dataset.type===type));
+  document.getElementById('catPickWrap').classList.toggle('hidden', type!=='cat');
+  const countInp = document.getElementById('examCount');
+  const hint = document.getElementById('examCountHint');
+  if(type==='full'){
+    countInp.value = Math.min(45, allItemsFlat().length);
+    hint.textContent = 'امتحان شامل يغطي أسئلة من كل الأقسام بالتساوي';
+  } else if(type==='random'){
+    countInp.value = 15;
+    hint.textContent = 'أسئلة عشوائية من كل الأصناف المتاحة';
+  } else {
+    countInp.value = 10;
+    hint.textContent = 'أسئلة من القسم المختار فقط';
+  }
+}
+
+/* Pick N items for the exam. Each item becomes one question showing ALL its
+   ingredients with the quantity field left blank for the employee to fill in. */
+function buildQuestions(n, catFilter){
+  const pool = allItemsFlat(catFilter).filter(f=> f.item.ingredients && f.item.ingredients.length);
+  if(!pool.length) return [];
+
+  let sourceItems;
+  if(examType==='full' && !catFilter){
+    const byCat = {};
+    pool.forEach(f=>{ (byCat[f.cat]=byCat[f.cat]||[]).push(f); });
+    const cats = Object.keys(byCat);
+    sourceItems = [];
+    let i=0;
+    while(sourceItems.length < n && sourceItems.length < pool.length){
+      const cat = cats[i % cats.length];
+      const arr = byCat[cat];
+      if(arr && arr.length){ sourceItems.push(arr.splice(Math.floor(Math.random()*arr.length),1)[0]); }
+      i++;
+      if(i > n*10) break;
+    }
+  } else {
+    const shuffled = [...pool].sort(()=>Math.random()-0.5);
+    sourceItems = shuffled.slice(0, n);
+  }
+
+  return sourceItems.map(f=>({
+    cat: f.cat, item: f.item,
+    answers: f.item.ingredients.map(()=>null), // user inputs per ingredient row
+    checked: false
+  }));
+}
+
+/* extract the leading numeric value from a quantity string, e.g. "1/2 من 3" -> "1", "70" -> "70" */
+function extractNumber(str){
+  if(str===undefined || str===null) return null;
+  const m = String(str).match(/\d+(\.\d+)?/);
+  return m ? m[0] : null;
+}
+function answersMatch(userVal, correctVal){
+  const un = extractNumber(userVal);
+  const cn = extractNumber(correctVal);
+  if(cn===null) return String(userVal||'').trim() === String(correctVal||'').trim();
+  if(un===null) return false;
+  return parseFloat(un) === parseFloat(cn);
+}
+
+let examSession = null; // {employee, typeLabel, questions, currentIdx, correctBlanks, totalBlanks}
+
+function startExam(){
+  if(!resolvedEmployee){ alert('من فضلك اكتب كود مسجل صحيح'); return; }
+  const empName = resolvedEmployee.name;
+  const empBranch = resolvedEmployee.branch;
+  const empCode = resolvedEmployee.code;
+
+  let n = parseInt(document.getElementById('examCount').value) || 10;
+  const catFilter = examType==='cat' ? document.getElementById('examCatSelect').value : null;
+
+  const questions = buildQuestions(n, catFilter);
+  if(!questions.length){ alert('لا يوجد أصناف كافية لعمل الامتحان'); return; }
+
+  examSession = {
+    empName, empBranch, empCode,
+    typeLabel: examType==='full' ? 'امتحان شامل (كل الأقسام)' : examType==='random' ? 'امتحان عشوائي' : `امتحان قسم: ${CAT_NAMES_AR[catFilter]||catFilter}`,
+    questions,
+    currentIdx: 0,
+    correctBlanks: 0,
+    totalBlanks: 0,
+    startedAt: new Date()
+  };
+  showScreen('screen-exam');
+  renderExamQuestion();
+}
+
+function renderExamQuestion(){
+  const s = examSession;
+  const q = s.questions[s.currentIdx];
+  document.getElementById('examProgress').textContent = `صنف ${s.currentIdx+1} من ${s.questions.length}`;
+  const card = document.getElementById('examCard');
+
+  const rows = q.item.ingredients.map(([qty,unit,name],i)=>`
+    <tr id="qrow${i}">
+      <td style="width:90px"><input class="inp" style="padding:6px 8px;font-size:14px" type="text" inputmode="decimal"
+        id="qin${i}" placeholder="؟" ${q.checked?'disabled':''} value="${q.answers[i]!==null?q.answers[i]:''}"/></td>
+      <td>${unit}</td>
+      <td>${name}</td>
+    </tr>`).join('');
+
+  card.innerHTML = `
+    <div class="examq">اكتب الكمية (الأرقام فقط) لكل مكون من مكونات صنف "<span style="color:#e94560">${q.item.name_en}</span>" (${q.item.name_ar}) — ${CAT_NAMES_AR[q.cat]||q.cat}</div>
+    <table><thead><tr><th>الكمية</th><th>الوحدة</th><th>المكون</th></tr></thead>
+      <tbody>${rows}</tbody></table>
+    <div style="margin-top:14px" id="nextWrap">
+      ${q.checked ? '' : '<button class="btn g" style="width:100%" onclick="checkQuestion()">تحقق من الإجابات</button>'}
+    </div>
+  `;
+  if(q.checked) showNextButton();
+}
+
+function checkQuestion(){
+  const s = examSession;
+  const q = s.questions[s.currentIdx];
+  if(q.checked) return;
+  q.checked = true;
+
+  q.item.ingredients.forEach(([qty],i)=>{
+    const val = document.getElementById('qin'+i).value;
+    q.answers[i] = val;
+    const rowOk = answersMatch(val, qty);
+    document.getElementById('qin'+i).disabled = true;
+    // ملحوظة: مفيش إظهار للصح/الغلط هنا خالص - الإجابات بتتسجل بس وتتقفل، والتصحيح بيظهر بعدين بالباسورد فقط
+    s.totalBlanks++;
+    if(rowOk) s.correctBlanks++;
+  });
+  document.getElementById('nextWrap').insertAdjacentHTML('afterbegin', '<div class="sub" style="margin-bottom:8px">✅ تم تسجيل إجاباتك لهذا الصنف</div>');
+  showNextButton();
+}
+
+function showNextButton(){
+  const s = examSession;
+  const isLast = s.currentIdx === s.questions.length-1;
+  document.getElementById('nextWrap').innerHTML =
+    `<button class="btn r" style="width:100%" onclick="${isLast?'finishExam()':'nextQuestion()'}">${isLast?'إنهاء الامتحان وعرض النتيجة':'الصنف التالي'}</button>`;
+}
+function nextQuestion(){
+  examSession.currentIdx++;
+  renderExamQuestion();
+}
+
+function finishExam(){
+  const s = examSession;
+  const total = s.totalBlanks;
+  const score = s.correctBlanks;
+  const pct = total ? Math.round((score/total)*100) : 0;
+  const passed = pct >= 70;
+  const certNumber = genCertNumber();
+
+  const history = JSON.parse(localStorage.getItem('kitchen1980_exam_history')||'[]');
+  history.unshift({name:s.empName, branch:s.empBranch, code:s.empCode, type:s.typeLabel, score, total, pct, passed, certNumber, date: new Date().toISOString()});
+  localStorage.setItem('kitchen1980_exam_history', JSON.stringify(history.slice(0,200)));
+
+  const dateStr = new Date().toLocaleDateString('ar-EG', {year:'numeric', month:'long', day:'numeric'});
+  const c = CERT_CONFIG;
+
+  document.getElementById('certCard').innerHTML = `
+    <span class="cert-leaf tl">🌿</span><span class="cert-leaf tr">🌿</span>
+    <span class="cert-leaf bl">🌿</span><span class="cert-leaf br">🌿</span>
+
+    <div class="cert-logo">🍽️ 1980 🍽️</div>
+    <div class="cert-sub">${passed ? '— شهادة إتمام — CERTIFICAT DE RÉUSSITE' : '— نتيجة الامتحان —'}</div>
+    <div class="cert-title">${c.titleEn} · ${c.titleAr}</div>
+    <div class="cert-hr"></div>
+
+    <div class="cert-label">يشهد بأن</div>
+    <div class="cert-name">${s.empName}</div>
+    <div class="cert-hr2"></div>
+
+    <div class="cert-line">${passed ? 'قد أتم بنجاح امتحان' : 'قد خاض امتحان'}</div>
+    <div class="cert-examname">${c.examName}</div>
+    <div class="cert-level">⭐ ${c.level}</div>
+    <div class="cert-branch">الفرع: ${s.empBranch} &nbsp;|&nbsp; الكود: ${s.empCode}</div>
+
+    <div class="cert-badge">النتيجة: ${pct}% | إجابات صحيحة: ${score}/${total}</div>
+
+    <div class="cert-sig-wrap">
+      <div class="cert-sig">
+        <div class="cert-sig-label">توقيع</div>
+        <div class="cert-sig-en">${c.sig1En}</div>
+        <div class="cert-sig-ar">${c.sig1Ar}</div>
+      </div>
+      <div class="cert-sig">
+        <div class="cert-sig-label">توقيع</div>
+        <div class="cert-sig-en">${c.sig2En}</div>
+        <div class="cert-sig-ar">${c.sig2Ar}</div>
+      </div>
+    </div>
+
+    <div class="cert-footer">
+      <span>رقم الشهادة: ${certNumber}</span>
+      <span>التاريخ: ${dateStr}</span>
+    </div>
+  `;
+
+  document.getElementById('certReview').innerHTML = `
+    <div class="card" style="text-align:center">
+      <div class="sub" style="margin-bottom:10px">تفاصيل الإجابات (صح/غلط) متاحة للمسؤول فقط</div>
+      <button class="btn d" onclick="requestReviewUnlock()">🔒 عرض تفاصيل الإجابات</button>
+    </div>
+  `;
+
+  showScreen('screen-cert');
+}
+
+function renderCertReview(s){
+  if(!s) return;
+  document.getElementById('certReview').innerHTML = s.questions.map((q,i)=>{
+    const rows = q.item.ingredients.map(([qty,unit,name],ri)=>{
+      const ok = answersMatch(q.answers[ri], qty);
+      return `<div style="font-size:11px;color:#aaa;margin-top:3px">${name}: إجابته "${q.answers[ri]||'—'}" ${ok?'✅':'❌ (الصح: '+qty+' '+unit+')'}</div>`;
+    }).join('');
+    return `<div class="cd">
+      <div style="font-size:12px;font-weight:700;color:#e94560">${i+1}. ${q.item.name_en} — ${q.item.name_ar}</div>
+      ${rows}
+    </div>`;
+  }).join('');
+}
+
+/* ===================== BACKUP / RESTORE ===================== */
+function exportData(){
+  const blob = new Blob([JSON.stringify({data:DATA, catIcons:CAT_ICONS, catNamesAr:CAT_NAMES_AR}, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'kitchen1980_backup.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function importData(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const parsed = JSON.parse(e.target.result);
+      if(!parsed.data) throw new Error('bad file');
+      DATA = parsed.data;
+      CAT_ICONS = Object.assign({}, DEFAULT_CAT_ICONS, parsed.catIcons||{});
+      CAT_NAMES_AR = Object.assign({}, DEFAULT_CAT_NAMES_AR, parsed.catNamesAr||{});
+      saveState();
+      renderCatGrid();
+      alert('تم الاستيراد بنجاح');
+    }catch(err){
+      alert('ملف غير صالح');
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+}
+
+/* ===================== INIT ===================== */
+loadState();
+loadEmployees();
+loadCertConfig();
+renderCatGrid();
+</script>
+</body>
+</html>
